@@ -1,0 +1,2657 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>__之旅</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+
+  <!-- Tailwind 配置 -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3B82F6',
+            secondary: '#10B981',
+            accent: '#8B5CF6',
+            dark: '#1E293B',
+            light: '#F8FAFC'
+          },
+          fontFamily: {
+            inter: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+
+  <!-- 自定义工具类 -->
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+
+      .bg-stars {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+      }
+
+      .bg-stars-dark {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+      }
+
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .text-shadow-lg {
+        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+      }
+
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .animate-pulse-slow {
+        animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+    }
+  </style>
+
+  <style>
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    /* 星空背景动画 */
+    .star {
+      position: absolute;
+      background-color: white;
+      border-radius: 50%;
+      animation: twinkle 3s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% {
+        opacity: 0.5;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* 导航栏滚动效果 */
+    .navbar-scrolled {
+      @apply bg-dark/90 backdrop-blur-md shadow-lg;
+    }
+
+    /* 景点卡片悬停效果 */
+    .attraction-card {
+      transition: all 0.3s ease;
+    }
+
+    .attraction-card:hover {
+      transform: translateY(-8px);
+    }
+
+
+    /* 流程步骤样式 */
+    .timeline-item {
+      position: relative;
+      padding-left: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      background-color: #3B82F6;
+      z-index: 10;
+    }
+
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      left: 0.75rem;
+      top: 1.5rem;
+      width: 2px;
+      height: calc(100% - 1.5rem);
+      background-color: rgba(59, 130, 246, 0.3);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item:last-child::after {
+      display: none;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-900 text-white overflow-x-hidden">
+  <!-- 星空背景 -->
+  <div id="stars-container" class="fixed inset-0 bg-gradient-to-b from-indigo-900 via-purple-900 to-slate-900 bg-stars z-0"></div>
+
+  <!-- 导航栏 -->
+  <nav id="navbar" class="fixed w-full z-50 transition-all duration-300">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="#home" class="text-2xl font-bold text-white flex items-center">
+        <i class="fa fa-map-o mr-2"></i>
+        <span>__之旅</span>
+      </a>
+
+      <!-- 桌面导航 -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="#home" class="text-white hover:text-primary transition-colors">首页</a>
+        <a href="#team" class="text-white hover:text-primary transition-colors">团队信息</a>
+        <a href="#attractions" class="text-white hover:text-primary transition-colors">精选景点</a>
+        <a href="#food" class="text-white hover:text-primary transition-colors">美食</a>
+        <a href="#itinerary" class="text-white hover:text-primary transition-colors">行程安排</a>
+        <a href="#tips" class="text-white hover:text-primary transition-colors">旅行贴士</a>
+      </div>
+
+      <!-- 功能按钮 -->
+      <div class="flex items-center space-x-4">
+        <button id="menu-toggle" class="md:hidden p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+          <i class="fa fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- 移动端导航菜单 -->
+    <div id="mobile-menu" class="md:hidden hidden bg-dark/95 backdrop-blur-md">
+      <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+        <a href="#home" class="text-white hover:text-primary transition-colors py-2">首页</a>
+        <a href="#team" class="text-white hover:text-primary transition-colors py-2">团队信息</a>
+        <a href="#attractions" class="text-white hover:text-primary transition-colors py-2">精选景点</a>
+        <a href="#food" class="text-white hover:text-primary transition-colors py-2">美食</a>
+        <a href="#itinerary" class="text-white hover:text-primary transition-colors py-2">行程安排</a>
+        <a href="#tips" class="text-white hover:text-primary transition-colors py-2">旅行贴士</a>
+      </div>
+    </div>
+  </nav>
+  <!-- 首页 -->
+  <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 bg-black/40"></div>
+      <img id="bg-image" src="https://picsum.photos/seed/chongqing1/1920/1080" alt="重庆夜景" class="w-full h-full object-cover">
+    </div>
+
+    <div class="container mx-auto px-4 z-10 text-center">
+      <h1 class="text-[clamp(2.5rem,8vw,5rem)] font-bold text-white text-shadow-lg mb-6 animate-float">
+          __之旅
+      </h1>
+      <p class="text-[clamp(1rem,3vw,1.5rem)] text-white/90 text-shadow mb-10 max-w-3xl mx-auto">
+        星城寻韵，山城揽江，天府品蜀
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="#team" class="px-8 py-3 bg-primary hover:bg-primary/90 text-white font-medium rounded-full transition-all transform hover:scale-105 hover:shadow-lg">
+          了解团队
+        </a>
+        <a href="#attractions" class="px-8 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-full transition-all transform hover:scale-105 hover:shadow-lg">
+          探索景点
+        </a>
+      </div>
+    </div>
+
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <a href="#team" class="text-white/80 hover:text-white transition-colors">
+        <i class="fa fa-chevron-down text-2xl"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- 团队信息 -->
+  <section id="team" class="relative min-h-screen flex items-center py-20 bg-gradient-to-b from-slate-900 to-slate-800 z-10">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.5rem,5vw,3rem)] font-bold mb-4">我们的团队</h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">四位志同道合的朋友，一起踏上探索重庆的旅程
+
+</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-dark/40 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+          <img src="1.jpg" alt="团队成员" class="w-24 h-24 rounded-full object-cover border-2 border-primary mx-auto mb-4">
+          <h3 class="text-xl font-bold text-center mb-1"></h3>
+          <p class="text-primary text-center text-sm mb-3"></p>
+          <p class="text-gray-400 text-center text-sm"></p>
+        </div>
+        <div class="bg-dark/40 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+          <img src="2.jpg" alt="团队成员" class="w-24 h-24 rounded-full object-cover border-2 border-primary mx-auto mb-4">
+          <h3 class="text-xl font-bold text-center mb-1"></h3>
+          <p class="text-primary text-center text-sm mb-3"></p>
+          <p class="text-gray-400 text-center text-sm"></p>
+        </div>
+        <div class="bg-dark/40 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+          <img src="3.jpg" alt="团队成员" class="w-24 h-24 rounded-full object-cover border-2 border-primary mx-auto mb-4">
+          <h3 class="text-xl font-bold text-center mb-1"></h3>
+          <p class="text-primary text-center text-sm mb-3"></p>
+          <p class="text-gray-400 text-center text-sm"></p>
+        </div>
+        <div class="bg-dark/40 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+          <img src="" alt="团队成员" class="w-24 h-24 rounded-full object-cover border-2 border-primary mx-auto mb-4">
+          <h3 class="text-xl font-bold text-center mb-1"></h3>
+          <p class="text-primary text-center text-sm mb-3"></p>
+          <p class="text-gray-400 text-center text-sm"></p>
+        </div>
+      </div>
+      <div class="mt-16 bg-dark/40 backdrop-blur-sm rounded-xl p-8 shadow-lg">
+        <h3 class="text-2xl font-bold mb-6">行程基本信息</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <h4 class="text-lg font-medium mb-2">出发时间</h4>
+            <p class="text-gray-400"> </p>
+          </div>
+          <div>
+            <h4 class="text-lg font-medium mb-2">集合地点</h4>
+            <p class="text-gray-400"> </p>
+          </div>
+          <div>
+            <h4 class="text-lg font-medium mb-2">联系方式</h4>
+            <p class="text-gray-400"> </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 景点攻略 -->
+  <section id="attractions" class="relative min-h-screen py-20 bg-gradient-to-b from-slate-800 to-slate-900 z-10">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.5rem,5vw,3rem)] font-bold mb-4">精选景点</h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">探索不同城市最具代表性的景点和打卡胜地</p>
+      </div>
+      <!-- 小导航栏 -->
+      <div class="flex justify-center space-x-4 mb-8">
+        <button class="city-btn bg-primary text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
+          data-city="chongqing">重庆</button>
+        <button class="city-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
+          data-city="changsha">长沙</button>
+        <button class="city-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
+          data-city="chengdu">成都</button>
+      </div>
+      <!-- 景点列表 -->
+      <div id="attraction-list">
+        <!-- 重庆景点 -->
+        <div id="chongqing" class="city-attractions">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- 景点1 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM2NDYxMzU1LjcxNTczNjJfMTczNjQ2MTM1Ny42OTY0NDJfMTczNjQ2MTM2MC4wODg4NTYyXzE3MzY0NjEzNjIuNDM0NTk4NF8xNzM2NDYxMzY0Ljc0MTU4MzZfMTczNjQ2MTM2Ny4xODEzMDc4%27/5.png"
+                  alt="洪崖洞" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">洪崖洞</h3>
+                <div class="flex items-center mb-3">
+                </div>
+                <p class="text-gray-400 mb-4">洪崖洞以其独特的巴渝传统建筑特色的吊脚楼风貌而闻名，夜晚灯光亮起时，仿佛置身于千与千寻的世界中</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">夜景</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">美食</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">拍照打卡</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 景点2 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://qcloud.dpfile.com/pc/OVFetau8Z5NF8jGZ8bWffSys12B9xJlfgd3_0QdDkcNdhzWFKOuIXowzVsir5tSo.jpg"
+                  alt="解放碑" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">解放碑</h3>
+                <div class="flex items-center mb-3">
+                </div>
+                <p class="text-gray-400 mb-4">解放碑是重庆的地标性建筑，也是重庆最繁华的商业中心之一，周围有众多商场、餐厅和娱乐场所</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">地标</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">购物</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">美食</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 景点3 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://img1.qunarzz.com/vs_ceph_b2c_001/c7ceb51e-211d-4e19-8c34-acf387b1c047.jpg"
+                  alt="李子坝轻轨站" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">李子坝轻轨站</h3>
+                <div class="flex items-center mb-3">
+                </div>
+                <p class="text-gray-400 mb-4">李子坝轻轨站是重庆最具特色的景点之一，轻轨穿楼而过的奇特景象吸引了无数游客前来打卡</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-accent/20 text-accent text-xs px-3 py-1 rounded-full">网红</span>
+                  <span class="bg-accent/20 text-accent text-xs px-3 py-1 rounded-full">交通</span>
+                  <span class="bg-accent/20 text-accent text-xs px-3 py-1 rounded-full">拍照</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 景点4 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://img1.baidu.com/it/u=2147249786,342769229&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1208"
+                  alt="长江索道" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">长江索道</h3>
+                <div class="flex items-center mb-3">
+                </div>
+                <p class="text-gray-400 mb-4">长江索道是重庆最具特色的交通工具之一，乘坐索道可以俯瞰长江和两岸的城市风光</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">自然奇观</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">观景</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">徒步观光</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 景点5 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://img1.baidu.com/it/u=539241312,1792368648&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=667"
+                  alt="山城步道" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">山城步道</h3>
+                <div class="flex items-center mb-3">
+                </div>
+                <p class="text-gray-400 mb-4">重庆特有的步道系统，串联起多个历史文化街区，是了解老重庆的绝佳方式</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">历史</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">购物</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">美食</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 景点6 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://img2.baidu.com/it/u=1118980142,4133368866&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=667"
+                  alt="南山一棵树" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">南山一棵树</h3>
+                <div class="flex items-center mb-3">
+                </div>
+                <p class="text-gray-400 mb-4">南山一棵树观景台是观赏重庆夜景的最佳地点之一，可以俯瞰整个渝中半岛的璀璨灯光  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">夜景</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">观景</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">拍照</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点7 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://img1.baidu.com/it/u=847236895,55871536&fm=253&fmt=auto&app=138&f=JPEG?w=752&h=500"
+                  alt="南山植物园" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">南山植物园</h3>
+                <div class="flex items-center mb-3">
+                </div>
+                <p class="text-gray-400 mb-4">含温室展览馆、大金鹰观景台等，3-4 月樱花盛开，登顶可 360° 俯瞰重庆两江交汇及渝中半岛 </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">植物</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">观景</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">赏花</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点8 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://img2.baidu.com/it/u=3474903473,3345911272&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1422"
+                  alt="老君洞道观" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">老君洞道观</h3>
+                <div class="flex items-center mb-3">
+                </div>
+                <p class="text-gray-400 mb-4">免费入园，可求事业姻缘，观景台适合日落拍照 </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">道观</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">拍照打卡</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">观景</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点9 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%276YeN5bqG5rmW5bm/5Lya6aaG5LuL57uNXzE3MzY2Mjc2NzUuNzEyMzgxOA%3D%3D%27/0.png"
+                  alt="湖广会馆" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">湖广会馆</h3>
+                <div class="flex items-center mb-3">
+                </div>
+                <p class="text-gray-400 mb-4">日游参观禹王宫，夜游有灯光秀及《夜.醉巴渝》演出 </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">历史</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">夜景</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">拍照</span>
+                </div>
+              </div>
+            </div>
+		</div>
+          <!-- 隐藏的更多重庆景点 -->
+          <div id="more-chongqing" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden">
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://sns-img-hw.xhscdn.com/030332016gd0vel4a55010zn7j00ongyld?imageView2/2/w/1080/format/webp" alt="鹅岭二厂" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">鹅岭二厂</h3>
+                <p class="text-gray-400 mb-4">鹅岭二厂是文艺青年的打卡圣地，有许多创意店铺和涂鸦墙  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">文艺</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">拍照</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">创意</span>
+                </div>
+              </div>
+            </div>
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://qcloud.dpfile.com/pc/viaAUkBaqneRMyIA0WdSlZ86MPaXlFLVT8wpC8xiolz6yiiYeocFIjl9YnOm2Umq.jpg" alt="鹅岭公园" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">鹅岭公园</h3>
+                <p class="text-gray-400 mb-4">鹅岭公园是重庆的老牌公园，风景秀丽，可俯瞰两江风光  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">公园</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">观景</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">休闲</span>
+                </div>
+              </div>
+            </div>
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://img2.baidu.com/it/u=759956345,4129952500&fm=253&fmt=auto&app=138&f=JPEG?w=667&h=500" alt="两江小渡" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">两江小渡</h3>
+                <p class="text-gray-400 mb-4">乘坐渡轮横渡长江或嘉陵江，欣赏两岸风光，感受重庆的水上交通文化</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">交通</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">观景</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">江景</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 加载更多按钮 -->
+          <div class="mt-12 text-center">
+            <button id="load-more-chongqing" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-8 py-3 transition-all transform hover:scale-105 hover:shadow-lg">
+              加载更多景点
+            </button>
+          </div>
+        </div>
+        <!-- 长沙景点 -->
+        <div id="changsha" class="city-attractions hidden">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- 景点1 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://img.meituan.net/leadinimg/730d496e452023be6d9cae7a709c0cca290572.webp%40watermark%3D0" alt="五一广场" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">五一广场</h3>
+                <p class="text-gray-400 mb-4">长沙核心商圈与交通枢纽，周边汇聚商场、美食与娱乐，是城市活力聚集地 </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">购物</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">交通</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">美食</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点2 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://img2.baidu.com/it/u=1685587430,4008435723&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1067" alt="国金中心（IFS）" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">国金中心（IFS）</h3>
+                <p class="text-gray-400 mb-4">高端商场，楼顶 KAWS 雕塑成潮流打卡点，融合时尚与现代建筑  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">地标</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">购物</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">打卡</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点3 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://qcloud.dpfile.com/pc/imGgwIbRGpU9zmSa12Nb1WtafMYNdf9AlBQSidHBvLMBYXA1x1nydTTt3cfSkZAw.jpg" alt="黄兴步行街" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">黄兴步行街</h3>
+                <p class="text-gray-400 mb-4">百年商业老街，串联古今，小吃、商铺密布，洋溢市井与文化气息 </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">地标</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">美食</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">百年商街</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点4 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://img0.baidu.com/it/u=2744516377,3427350855&fm=253&fmt=auto&app=138&f=JPEG?w=1067&h=800" alt="南门口" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">南门口</h3>
+                <p class="text-gray-400 mb-4">老长沙美食秘境，臭豆腐、糖油粑粑等小吃汇聚，烟火中藏本土风味 </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">小吃街</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">美食</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">拍照</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点5 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://b0.bdstatic.com/ugc/EhZkRQodQL76MQa5xYaXtw6dd9e66bab80fd9cb1bd43d96849d7de.jpg" alt="杜甫江阁" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">杜甫江阁</h3>
+                <p class="text-gray-400 mb-4">仿唐建筑临江而立，登阁赏湘江夜景，灯火与江波辉映，纪念诗圣杜甫</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">唐式建筑</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">夜景</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">拍照</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点6 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://img1.baidu.com/it/u=243517394,2008694671&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1067" alt="橘子洲" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">橘子洲</h3>
+                <p class="text-gray-400 mb-4">江心洲矗立毛泽东青年艺术雕塑，承载红色记忆，洲上绿树成荫，自然与人文交融 </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">地标</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">观景</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">拍照</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点7 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://img2.baidu.com/it/u=1972489741,20113290&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1067" alt="太平街" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">太平街</h3>
+                <p class="text-gray-400 mb-4">长沙现存最完整古街，藏贾谊故居，老建筑间遍佈小吃文创，尽显老城烟火</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">古街</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">文韵</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">烟火</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点8 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://img0.baidu.com/it/u=3255685795,1261826890&fm=253&fmt=auto&app=138&f=JPEG?w=667&h=500" alt="岳麓山" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">岳麓山</h3>
+                <p class="text-gray-400 mb-4">南岳余脉，山林间藏岳麓书院、爱晚亭等古迹，四季风光各异，徒步与文化探寻皆宜</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">古迹</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">观景</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">拍照</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点9 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://img2.baidu.com/it/u=3670448180,4168456398&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1200" alt="爱晚亭" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">爱晚亭</h3>
+                <p class="text-gray-400 mb-4">四大名亭之一，毛泽东题字，深秋枫叶似火，重现 “停车坐爱枫林晚” 的诗意</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">历史</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">观景</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">拍照</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点10 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://b0.bdstatic.com/ugc/G-XR8SYJCJty6EqiZugN0gefb175df6c758a1d0a3e910915bf151d.jpg" alt="岳麓书院" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">岳麓书院</h3>
+                <p class="text-gray-400 mb-4">千年学府（宋代四大书院之首），古朴建筑群流淌文化传承，尽显书院遗风</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">历史</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">文化</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">拍照</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点11 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://imagepphcloud.thepaper.cn/pph/image/201/391/20.jpg" alt="麓山南路" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">麓山南路</h3>
+                <p class="text-gray-400 mb-4">湖大旁的文艺街道，文创小店、美食摊铺错落，弥漫青春与烟火交织的气息</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">文艺</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">美食</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">拍照</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点12 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://qcloud.dpfile.com/pc/yxB9U5khqFnT8Do4STlGzMXbsviGjo09DSgj3RouJ3uuqZTqhd8pQV-AniHtbnK-.jpg" alt="潮宗街" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">潮宗街</h3>
+                <p class="text-gray-400 mb-4">历史文化街区，青石板路串联老建筑与文艺店，留存老长沙街巷肌理与慢生活</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">历史</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">观景</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">拍照</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点13 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://img2.baidu.com/it/u=3633807675,3330743524&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1067" alt="古开福寺" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">古开福寺</h3>
+                <p class="text-gray-400 mb-4">千年古刹，梵音袅袅，古朴建筑与佛教文化交融，是祈福静心之地</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">千年佛寺</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">观景</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">拍照</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点14 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://b.bdstatic.com/8550b2c2c72231c8047f1e0a39b7c61d.jpeg@h_1280" alt="湖南博物院" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">湖南博物院</h3>
+                <p class="text-gray-400 mb-4">以马王堆汉墓文物为核心，陈列千年遗存，解码湖湘文明</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">历史</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">观景</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">拍照</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点15 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://hellorfimg.zcool.cn/provider_image/large/2238690057.jpg" alt="天心阁" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">天心阁</h3>
+                <p class="text-gray-400 mb-4">明代古城楼，存明代城墙及月城，具城防研究价值。登阁瞰城，夜灯勾檐，古韵十足</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">历史</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">建筑</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">拍照</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 隐藏的更多长沙景点 -->
+          <div id="more-changsha" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden">
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://img1.baidu.com/it/u=826821599,287643819&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1422" alt="烈士公园" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">烈士公园</h3>
+                <p class="text-gray-400 mb-4">纪念革命先烈的园林式公园，年嘉湖碧波、纪念碑巍峨，融合休闲与追思</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">休闲</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">园林</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">湖光山色</span>
+                </div>
+              </div>
+            </div>
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://img1.baidu.com/it/u=2643377878,4214558242&fm=253&fmt=auto&app=138&f=JPEG?w=906&h=601" alt="万家丽广场" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">万家丽广场</h3>
+                <p class="text-gray-400 mb-4">超大型商业综合体，内部建筑恢宏如宫殿，顶楼可俯瞰城市，集购物与观光于一体</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">建筑奇观</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">观景</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">超级 mall</span>
+                </div>
+              </div>
+            </div>
+			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://bkimg.cdn.bcebos.com/pic/9c16fdfaaf51f3deb48f502908b9e71f3a292df5d37c" alt="扬帆夜市" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">扬帆夜市</h3>
+                <p class="text-gray-400 mb-4">大型夜市，烟火蒸腾，美食、文创俱全，尽显长沙夜晚的热闹烟火气</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">夜市</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">美食</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">夜生活地标</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 加载更多按钮 -->
+          <div class="mt-12 text-center">
+            <button id="load-more-changsha" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-8 py-3 transition-all transform hover:scale-105 hover:shadow-lg">
+              加载更多景点
+            </button>
+          </div>
+        </div>
+        <!-- 成都景点 -->
+        <div id="chengdu" class="city-attractions hidden">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- 景点1 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://img.meituan.net/leadinimg/953bc64b0f2deb7f40d0f4509243d3dc264312.webp%40watermark%3D0" alt="武侯祠" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">武侯祠</h3>
+                <p class="text-gray-400 mb-4">武侯祠是纪念诸葛亮的专祠，是中国唯一的君臣合祀祠庙  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">历史</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">文化</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">旅游</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点2 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://pic.rmb.bdstatic.com/bjh/240717/beautify/4f9bd8ca7f6d2a0590978552fdb318c6.jpeg@h_1280" alt="杜甫草堂" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">杜甫草堂</h3>
+                <p class="text-gray-400 mb-4">唐代杜甫故居，园林清幽，茅屋遗址与文人碑刻相映成趣</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">历史</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">文化</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">文人故居</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点3 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://img1.baidu.com/it/u=1475766680,1188716851&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1067" alt="金沙遗址博物馆" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">金沙遗址博物馆</h3>
+                <p class="text-gray-400 mb-4">古蜀文明核心遗址，出土太阳神鸟金饰，展 3000 年前青铜器、玉器及国际特展</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">历史</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">文物展</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">考古</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点4 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://qcloud.dpfile.com/pc/EvYGOAm5IzNc9gxmcS4mKtI8iONZlBDaa8pa2BZiFlRWpHUTjawvZAxm1Q1IsU7K.jpg" alt="文殊院" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">文殊院</h3>
+                <p class="text-gray-400 mb-4">川西佛教圣地，清代建筑群肃穆，有千佛和平塔，周边可体验川派美食与手工艺 </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">佛教文化</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">祈福</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">美食</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点5 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://img1.baidu.com/it/u=3494697429,2941909472&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1067" alt="青羊宫" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">青羊宫</h3>
+                <p class="text-gray-400 mb-4">成都最古老道观，有唐代铜羊、三清殿，夏季延时开放，可参与道教活动</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">道教文化</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">历史遗迹</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">古建筑</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点6 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://bkimg.cdn.bcebos.com/pic/902397dda144ad345982931ce3fb1bf431adcaef2fad" alt="大熊猫基地" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">大熊猫基地</h3>
+                <p class="text-gray-400 mb-4">全球最大熊猫保护机构，开园看熊猫晨间活动，熊猫时空馆</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">熊猫</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">国宝</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">拍照</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点7 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://img2.baidu.com/it/u=2769533926,561842846&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1422" alt="青城山 - 都江堰" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">青城山 - 都江堰</h3>
+                <p class="text-gray-400 mb-4">青城山为道教发源地，前山道观、后山清幽；都江堰是世界遗产，展古代水利智慧，有实景演出</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">自然</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">古迹</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">拍照</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点8 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://img0.baidu.com/it/u=1210977121,1732909866&fm=253&fmt=auto&app=120&f=JPEG?w=750&h=500" alt="成都热雪奇迹（都江堰）" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">成都热雪奇迹（都江堰）</h3>
+                <p class="text-gray-400 mb-4">室内滑雪场，可滑雪、玩雪地摩托</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">室内滑雪</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">运动</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">刺激</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点9 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275LiK5rW35Lq65rCR5YWs5ZutXzE3MzQwMjkzODAuNDEwNDgzNg%3D%3D%27/0.png" alt="人民公园" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">人民公园</h3>
+                <p class="text-gray-400 mb-4">成都人休闲聚集地，鹤鸣茶社品茶、看川剧变脸，感受市井生活</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">市井</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">川剧</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">休闲</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点10 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://img0.baidu.com/it/u=3828226783,1169059322&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1576" alt="宽窄巷子" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">宽窄巷子</h3>
+                <p class="text-gray-400 mb-4">清代古街，青砖墙与川西民居风格，夜晚灯笼亮，酒吧文创热闹</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">历史街区</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">小吃</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">夜游</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点11 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://qcloud.dpfile.com/pc/ekHFbg3moAcOA7SszCaQScarcXWUVRG3SH-ulXWBiiYtS4AHLKPXFhGyuI2dCwk8.jpg" alt="东郊记忆" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">东郊记忆</h3>
+                <p class="text-gray-400 mb-4">工业风艺术区，由旧厂房改造，有音乐场馆、涂鸦墙及数字艺术展</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">工业风</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">创意园区</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">拍照</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点12 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://img1.baidu.com/it/u=2275718094,376007562&fm=253&fmt=auto&app=138&f=JPEG?w=1067&h=800" alt="春熙路 - 太古里" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">春熙路 - 太古里</h3>
+                <p class="text-gray-400 mb-4">成都核心商圈，有 IFS 爬墙熊猫、方所书店，毗邻镋钯街（中国最美街道）</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">购物</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">网红</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">时尚</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点13 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://img0.baidu.com/it/u=470495280,12858889&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=773" alt="望江楼公园" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">望江楼公园</h3>
+                <p class="text-gray-400 mb-4">纪念唐代薛涛，24 小时免费开放，园林遍植竹子，文物区有薛涛井与明清建筑</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">竹林</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">文人纪念</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">小众免费</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点14 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://qcloud.dpfile.com/pc/QJotOC78Wgnp61CI6_GfeT6Bc8gCwjjgAsEnEnJ1bndmjDt2OW_Af5Bp18shWGUp.jpg" alt="铁像寺水街" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">铁像寺水街</h3>
+                <p class="text-gray-400 mb-4">高新区 “小江南”，古寺与现代商业结合，有戏楼、茶馆及水上漂浮电影院</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">非遗</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">水街</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">夜游</span>
+                </div>
+              </div>
+            </div>
+			<!-- 景点15 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://picx.zhimg.com/v2-68f247578cc3396d61a37e7a61e92e00_r.jpg?source=2c26e567" alt="鹿野苑石刻博物馆" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">鹿野苑石刻博物馆</h3>
+                <p class="text-gray-400 mb-4">川西民居风格，藏南北朝至明清石刻，庭院竹林相映</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">小众博物馆</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">石刻</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">需预约</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 隐藏的更多成都景点 -->
+          <div id="more-chengdu" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden">
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://gips0.baidu.com/it/u=3005814972,1000373002&fm=3074&app=3074&f=JPEG" alt="锦江剧场・川剧秀" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">锦江剧场・川剧秀</h3>
+                <p class="text-gray-400 mb-4">百年剧场，看《川剧秀・传奇变脸》，近距离体验变脸、喷火等非遗</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">非遗</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">非遗</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">演出互动</span>
+                </div>
+              </div>
+            </div>
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="5.jpg" alt="成都博物馆" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">成都博物馆</h3>
+                <p class="text-gray-400 mb-4">市中心地标，常设展讲成都历史，常办国际特展，免费需预约</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">城市历史</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">文物展</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">特展</span>
+                </div>
+              </div>
+            </div>
+			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMzMzA2MjIxLjMyODkyMjM%3D%27/0.png" alt="虹口漂流（都江堰）" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">虹口漂流（都江堰）</h3>
+                <p class="text-gray-400 mb-4">夏季避暑首选，河漂流，两岸青山，为国家体育旅游精品景区</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                 <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">漂流</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">户外冒险</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">避暑</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 加载更多按钮 -->
+          <div class="mt-12 text-center">
+            <button id="load-more-chengdu" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-8 py-3 transition-all transform hover:scale-105 hover:shadow-lg">
+              加载更多景点
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 美食页面 -->
+  <section id="food" class="relative min-h-screen py-20 bg-gradient-to-b from-slate-800 to-slate-900 z-10">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.5rem,5vw,3rem)] font-bold mb-4">各地美食</h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">探索不同城市的特色美食</p>
+      </div>
+      <!-- 小导航栏 -->
+      <div class="flex justify-center space-x-4 mb-8">
+        <button class="city-food-btn bg-primary text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
+          data-city="chongqing-food">重庆</button>
+        <button class="city-food-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
+          data-city="changsha-food">长沙</button>
+        <button class="city-food-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
+          data-city="chengdu-food">成都</button>
+      </div>
+      <!-- 美食列表 -->
+      <div id="food-list">
+        <!-- 重庆美食 -->
+        <div id="chongqing-food" class="city-foods">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- 美食1 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=""
+                  alt="重庆火锅" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">重庆火锅</h3>
+                <p class="text-gray-400 mb-4">重庆火锅以其麻辣鲜香的独特风味而闻名，各种食材在滚烫的锅底中涮煮，十分过瘾  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">麻辣</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食2 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="小面" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">重庆小面</h3>
+                <p class="text-gray-400 mb-4">重庆小面口感筋道，调料丰富，是重庆人最爱的早餐之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">重庆特色</span>
+                </div>
+              </div>
+            </div>
+			<!-- 美食3 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="小面" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">重庆小面</h3>
+                <p class="text-gray-400 mb-4">重庆小面口感筋道，调料丰富，是重庆人最爱的早餐之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">重庆特色</span>
+                </div>
+              </div>
+            </div>
+			<!-- 美食4 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="小面" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">重庆小面</h3>
+                <p class="text-gray-400 mb-4">重庆小面口感筋道，调料丰富，是重庆人最爱的早餐之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">重庆特色</span>
+                </div>
+              </div>
+            </div>
+			<!-- 美食5 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="小面" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">重庆小面</h3>
+                <p class="text-gray-400 mb-4">重庆小面口感筋道，调料丰富，是重庆人最爱的早餐之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">重庆特色</span>
+                </div>
+              </div>
+            </div>
+			<!-- 美食6 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="小面" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">重庆小面</h3>
+                <p class="text-gray-400 mb-4">重庆小面口感筋道，调料丰富，是重庆人最爱的早餐之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">重庆特色</span>
+                </div>
+              </div>
+            </div>
+			<!-- 美食7 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="小面" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">重庆小面</h3>
+                <p class="text-gray-400 mb-4">重庆小面口感筋道，调料丰富，是重庆人最爱的早餐之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">重庆特色</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食8 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="小面" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">重庆小面</h3>
+                <p class="text-gray-400 mb-4">重庆小面口感筋道，调料丰富，是重庆人最爱的早餐之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">重庆特色</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食9 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="小面" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">重庆小面</h3>
+                <p class="text-gray-400 mb-4">重庆小面口感筋道，调料丰富，是重庆人最爱的早餐之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">重庆特色</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食10 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="小面" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">重庆小面</h3>
+                <p class="text-gray-400 mb-4">重庆小面口感筋道，调料丰富，是重庆人最爱的早餐之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">重庆特色</span>
+                </div>
+              </div>
+            </div>
+			<!-- 美食11 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="小面" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">重庆小面</h3>
+                <p class="text-gray-400 mb-4">重庆小面口感筋道，调料丰富，是重庆人最爱的早餐之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">重庆特色</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食12 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="小面" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">重庆小面</h3>
+                <p class="text-gray-400 mb-4">重庆小面口感筋道，调料丰富，是重庆人最爱的早餐之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">重庆特色</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食13 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="小面" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">重庆小面</h3>
+                <p class="text-gray-400 mb-4">重庆小面口感筋道，调料丰富，是重庆人最爱的早餐之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">重庆特色</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食14 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="小面" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">重庆小面</h3>
+                <p class="text-gray-400 mb-4">重庆小面口感筋道，调料丰富，是重庆人最爱的早餐之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">重庆特色</span>
+                </div>
+              </div>
+            </div>
+			<!-- 美食15 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="小面" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">重庆小面</h3>
+                <p class="text-gray-400 mb-4">重庆小面口感筋道，调料丰富，是重庆人最爱的早餐之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">重庆特色</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 隐藏的更多重庆美食 -->
+          <div id="more-chongqing-food" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden">
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="重庆小面" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">重庆小面</h3>
+                <p class="text-gray-400 mb-4">重庆小面口感筋道，调料丰富，是重庆人最爱的早餐之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">重庆特色</span>
+                </div>
+              </div>
+            </div>
+			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="重庆小面" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">重庆小面</h3>
+                <p class="text-gray-400 mb-4">重庆小面口感筋道，调料丰富，是重庆人最爱的早餐之一</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">重庆特色</span>
+                </div>
+              </div>
+            </div>
+			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="重庆小面" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">重庆小面</h3>
+                <p class="text-gray-400 mb-4">重庆小面口感筋道，调料丰富，是重庆人最爱的早餐之一</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">重庆特色</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 加载更多按钮 -->
+          <div class="mt-12 text-center">
+            <button id="load-more-chongqing-food" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-8 py-3 transition-all transform hover:scale-105 hover:shadow-lg">
+              加载更多美食
+            </button>
+          </div>
+        </div>
+        <!-- 长沙美食 -->
+        <div id="changsha-food" class="city-foods hidden">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- 美食1 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="臭豆腐" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">长沙臭豆腐</h3>
+                <p class="text-gray-400 mb-4">长沙臭豆腐闻起来臭，吃起来香，是长沙的标志性美食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色小吃</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">香辣</span>
+                </div>
+              </div>
+            </div>
+			<!-- 美食2 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="臭豆腐" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">长沙臭豆腐</h3>
+                <p class="text-gray-400 mb-4">长沙臭豆腐闻起来臭，吃起来香，是长沙的标志性美食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色小吃</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">香辣</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食3 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="臭豆腐" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">长沙臭豆腐</h3>
+                <p class="text-gray-400 mb-4">长沙臭豆腐闻起来臭，吃起来香，是长沙的标志性美食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色小吃</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">香辣</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食4 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="臭豆腐" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">长沙臭豆腐</h3>
+                <p class="text-gray-400 mb-4">长沙臭豆腐闻起来臭，吃起来香，是长沙的标志性美食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色小吃</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">香辣</span>
+                </div>
+              </div>
+            </div>
+			<!-- 美食5 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="臭豆腐" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">长沙臭豆腐</h3>
+                <p class="text-gray-400 mb-4">长沙臭豆腐闻起来臭，吃起来香，是长沙的标志性美食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色小吃</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">香辣</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食6 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="臭豆腐" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">长沙臭豆腐</h3>
+                <p class="text-gray-400 mb-4">长沙臭豆腐闻起来臭，吃起来香，是长沙的标志性美食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色小吃</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">香辣</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食7 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="臭豆腐" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">长沙臭豆腐</h3>
+                <p class="text-gray-400 mb-4">长沙臭豆腐闻起来臭，吃起来香，是长沙的标志性美食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色小吃</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">香辣</span>
+                </div>
+              </div>
+            </div>
+			<!-- 美食8 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="臭豆腐" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">长沙臭豆腐</h3>
+                <p class="text-gray-400 mb-4">长沙臭豆腐闻起来臭，吃起来香，是长沙的标志性美食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色小吃</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">香辣</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食9 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="臭豆腐" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">长沙臭豆腐</h3>
+                <p class="text-gray-400 mb-4">长沙臭豆腐闻起来臭，吃起来香，是长沙的标志性美食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色小吃</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">香辣</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食10 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="臭豆腐" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">长沙臭豆腐</h3>
+                <p class="text-gray-400 mb-4">长沙臭豆腐闻起来臭，吃起来香，是长沙的标志性美食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色小吃</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">香辣</span>
+                </div>
+              </div>
+            </div>
+			<!-- 美食11 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="臭豆腐" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">长沙臭豆腐</h3>
+                <p class="text-gray-400 mb-4">长沙臭豆腐闻起来臭，吃起来香，是长沙的标志性美食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色小吃</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">香辣</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食12 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="臭豆腐" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">长沙臭豆腐</h3>
+                <p class="text-gray-400 mb-4">长沙臭豆腐闻起来臭，吃起来香，是长沙的标志性美食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色小吃</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">香辣</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食13 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="臭豆腐" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">长沙臭豆腐</h3>
+                <p class="text-gray-400 mb-4">长沙臭豆腐闻起来臭，吃起来香，是长沙的标志性美食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色小吃</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">香辣</span>
+                </div>
+              </div>
+            </div>
+			<!-- 美食14 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="臭豆腐" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">长沙臭豆腐</h3>
+                <p class="text-gray-400 mb-4">长沙臭豆腐闻起来臭，吃起来香，是长沙的标志性美食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色小吃</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">香辣</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食15 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="臭豆腐" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">长沙臭豆腐</h3>
+                <p class="text-gray-400 mb-4">长沙臭豆腐闻起来臭，吃起来香，是长沙的标志性美食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色小吃</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">香辣</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 隐藏的更多长沙美食 -->
+          <div id="more-changsha-food" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden">
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="长沙臭豆腐" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">长沙臭豆腐</h3>
+                <p class="text-gray-400 mb-4">长沙臭豆腐闻起来臭，吃起来香，是长沙的标志性美食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">特色小吃</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">香辣</span>
+                </div>
+              </div>
+            </div>
+			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="长沙臭豆腐" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">长沙臭豆腐</h3>
+                <p class="text-gray-400 mb-4">长沙臭豆腐闻起来臭，吃起来香，是长沙的标志性美食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">特色小吃</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">香辣</span>
+                </div>
+              </div>
+            </div>
+			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="长沙臭豆腐" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">长沙臭豆腐</h3>
+                <p class="text-gray-400 mb-4">长沙臭豆腐闻起来臭，吃起来香，是长沙的标志性美食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">特色小吃</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">香辣</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 加载更多按钮 -->
+          <div class="mt-12 text-center">
+            <button id="load-more-changsha-food" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-8 py-3 transition-all transform hover:scale-105 hover:shadow-lg">
+              加载更多美食
+            </button>
+          </div>
+        </div>
+        <!-- 成都美食 -->
+        <div id="chengdu-food" class="city-foods hidden">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- 美食1 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="龙抄手" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">龙抄手</h3>
+                <p class="text-gray-400 mb-4">龙抄手皮薄馅大，汤汁鲜美，是成都的特色面食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
+                </div>
+              </div>
+            </div>
+			<!-- 美食2 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="龙抄手" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">龙抄手</h3>
+                <p class="text-gray-400 mb-4">龙抄手皮薄馅大，汤汁鲜美，是成都的特色面食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食3 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="龙抄手" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">龙抄手</h3>
+                <p class="text-gray-400 mb-4">龙抄手皮薄馅大，汤汁鲜美，是成都的特色面食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食4 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="龙抄手" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">龙抄手</h3>
+                <p class="text-gray-400 mb-4">龙抄手皮薄馅大，汤汁鲜美，是成都的特色面食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食5 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="龙抄手" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">龙抄手</h3>
+                <p class="text-gray-400 mb-4">龙抄手皮薄馅大，汤汁鲜美，是成都的特色面食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食6 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="龙抄手" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">龙抄手</h3>
+                <p class="text-gray-400 mb-4">龙抄手皮薄馅大，汤汁鲜美，是成都的特色面食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食7 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="龙抄手" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">龙抄手</h3>
+                <p class="text-gray-400 mb-4">龙抄手皮薄馅大，汤汁鲜美，是成都的特色面食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食8 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="龙抄手" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">龙抄手</h3>
+                <p class="text-gray-400 mb-4">龙抄手皮薄馅大，汤汁鲜美，是成都的特色面食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食9 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="龙抄手" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">龙抄手</h3>
+                <p class="text-gray-400 mb-4">龙抄手皮薄馅大，汤汁鲜美，是成都的特色面食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食10 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="龙抄手" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">龙抄手</h3>
+                <p class="text-gray-400 mb-4">龙抄手皮薄馅大，汤汁鲜美，是成都的特色面食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食11 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="龙抄手" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">龙抄手</h3>
+                <p class="text-gray-400 mb-4">龙抄手皮薄馅大，汤汁鲜美，是成都的特色面食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食12 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="龙抄手" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">龙抄手</h3>
+                <p class="text-gray-400 mb-4">龙抄手皮薄馅大，汤汁鲜美，是成都的特色面食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食13 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="龙抄手" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">龙抄手</h3>
+                <p class="text-gray-400 mb-4">龙抄手皮薄馅大，汤汁鲜美，是成都的特色面食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食14 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="龙抄手" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">龙抄手</h3>
+                <p class="text-gray-400 mb-4">龙抄手皮薄馅大，汤汁鲜美，是成都的特色面食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
+                </div>
+              </div>
+            </div>
+            <!-- 美食15 -->
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="龙抄手" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">龙抄手</h3>
+                <p class="text-gray-400 mb-4">龙抄手皮薄馅大，汤汁鲜美，是成都的特色面食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 隐藏的更多成都美食 -->
+          <div id="more-chengdu-food" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden">
+            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="龙抄手" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">龙抄手</h3>
+                <p class="text-gray-400 mb-4">龙抄手皮薄馅大，汤汁鲜美，是成都的特色面食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">特色美食</span>
+                </div>
+              </div>
+            </div>
+			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="龙抄手" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">龙抄手</h3>
+                <p class="text-gray-400 mb-4">龙抄手皮薄馅大，汤汁鲜美，是成都的特色面食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">特色美食</span>
+                </div>
+              </div>
+            </div>
+			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+              <div class="relative h-56 overflow-hidden">
+                <img src=" "
+                  alt="龙抄手" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">龙抄手</h3>
+                <p class="text-gray-400 mb-4">龙抄手皮薄馅大，汤汁鲜美，是成都的特色面食之一  </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">面食</span>
+                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">特色美食</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 加载更多按钮 -->
+          <div class="mt-12 text-center">
+            <button id="load-more-chengdu-food" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-8 py-3 transition-all transform hover:scale-105 hover:shadow-lg">
+              加载更多美食
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 行程安排 -->
+  <section id="itinerary" class="relative min-h-screen py-20 bg-gradient-to-b from-slate-900 to-slate-800 z-10">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.5rem,5vw,3rem)] font-bold mb-4">行程安排</h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">湘渝川漫游，解码星城烟火、山城江湖与天府闲情 </p>
+      </div>
+
+      <!-- 行程导航 -->
+      <div class="flex overflow-x-auto pb-4 mb-8 space-x-2">
+        <button class="itinerary-day-btn bg-primary text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
+          data-day="day-1">
+          第一天
+        </button>
+        <button class="itinerary-day-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
+          data-day="day-2">
+          第二天
+        </button>
+        <button class="itinerary-day-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
+          data-day="day-3">
+          第三天
+        </button>
+        <button class="itinerary-day-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
+          data-day="day-4">
+          第四天
+        </button>
+        <button class="itinerary-day-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
+          data-day="day-5">
+          第五天
+        </button>
+        <button class="itinerary-day-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
+          data-day="day-6">
+          第六天
+        </button>
+        <button class="itinerary-day-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
+          data-day="day-7">
+          第七天
+        </button>
+        <button class="itinerary-day-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
+          data-day="day-8">
+          第八天
+        </button>
+        <button class="itinerary-day-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
+          data-day="day-9">
+          第九天
+        </button>
+        <button class="itinerary-day-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
+          data-day="day-10">
+          第十天
+        </button>
+		<button class="itinerary-day-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
+          data-day="day-11">
+          第十一天
+        </button>
+		<button class="itinerary-day-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
+          data-day="day-12">
+          第十二天
+        </button>
+      </div>
+
+      <!-- 行程内容 -->
+      <div id="itinerary-content">
+        <!-- 第一天行程 -->
+        <div id="day-1" class="itinerary-day-content bg-dark/40 backdrop-blur-sm rounded-xl p-8 shadow-lg">
+          <h3 class="text-2xl font-bold mb-6">第一天： </h3>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400">  </p>
+            </div>
+
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 第二天行程 -->
+        <div id="day-2" class="itinerary-day-content hidden bg-dark/40 backdrop-blur-sm rounded-xl p-8 shadow-lg">
+          <h3 class="text-2xl font-bold mb-6">第二天： </h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+          </div>
+        </div>
+        <!-- 第三天行程 -->
+        <div id="day-3" class="itinerary-day-content hidden bg-dark/40 backdrop-blur-sm rounded-xl p-8 shadow-lg">
+          <h3 class="text-2xl font-bold mb-6">第三天： </h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 第四天行程 -->
+        <div id="day-4" class="itinerary-day-content hidden bg-dark/40 backdrop-blur-sm rounded-xl p-8 shadow-lg">
+          <h3 class="text-2xl font-bold mb-6">第四天： </h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 第五天行程 -->
+        <div id="day-5" class="itinerary-day-content hidden bg-dark/40 backdrop-blur-sm rounded-xl p-8 shadow-lg">
+          <h3 class="text-2xl font-bold mb-6">第五天： </h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 第六天行程 -->
+        <div id="day-6" class="itinerary-day-content hidden bg-dark/40 backdrop-blur-sm rounded-xl p-8 shadow-lg">
+          <h3 class="text-2xl font-bold mb-6">第六天： </h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400">  </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">  </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">  </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 第七天行程 -->
+        <div id="day-7" class="itinerary-day-content hidden bg-dark/40 backdrop-blur-sm rounded-xl p-8 shadow-lg">
+          <h3 class="text-2xl font-bold mb-6">第七天： </h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+          </div>
+        </div>
+      </div>
+	          
+        <!-- 第八天行程 -->
+        <div id="day-8" class="itinerary-day-content hidden bg-dark/40 backdrop-blur-sm rounded-xl p-8 shadow-lg">
+          <h3 class="text-2xl font-bold mb-6">第八天： </h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400">  </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">  </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">  </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+          </div>
+        </div>        
+        
+		<!-- 第九天行程 -->
+        <div id="day-9" class="itinerary-day-content hidden bg-dark/40 backdrop-blur-sm rounded-xl p-8 shadow-lg">
+          <h3 class="text-2xl font-bold mb-6">第九天： </h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400">  </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">  </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">  </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+          </div>
+        </div>
+		        
+        <!-- 第十天行程 -->
+        <div id="day-10" class="itinerary-day-content hidden bg-dark/40 backdrop-blur-sm rounded-xl p-8 shadow-lg">
+          <h3 class="text-2xl font-bold mb-6">第十天： </h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400">  </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">  </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">  </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+            
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+          </div>
+        </div>
+		
+		<!-- 第十一天行程 -->
+        <div id="day-11" class="itinerary-day-content bg-dark/40 backdrop-blur-sm rounded-xl p-8 shadow-lg">
+          <h3 class="text-2xl font-bold mb-6">第十一天： </h3>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400">  </p>
+            </div>
+
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+          </div>
+        </div>
+		
+		<!-- 第十二天行程 -->
+        <div id="day-12" class="itinerary-day-content bg-dark/40 backdrop-blur-sm rounded-xl p-8 shadow-lg">
+          <h3 class="text-2xl font-bold mb-6">第十二天： </h3>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400">  </p>
+            </div>
+
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"> </h4>
+              <p class="text-gray-400"> </p>
+            </div>
+          </div>
+        </div>
+  </section>
+
+  <!-- 旅行贴士  -->
+  <section id="tips" class="py-20 bg-gray-900">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-bold mb-4 text-white">旅行贴士</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">实用的旅行建议，让你的旅程更加顺利</p>
+        </div>
+        
+        <!-- 贴士卡片 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-gray-800 rounded-xl shadow-lg p-8 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-700">
+                <div class="w-14 h-14 bg-blue-900/30 rounded-full flex items-center justify-center mb-6">
+                    <i class="fa fa-suitcase text-blue-400 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4 text-white">行李打包建议</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start">
+                        <i class="fa fa-check text-green-400 mt-1 mr-3"></i>
+                        <span class="text-gray-300">带上轻便防水的外套，山区天气多变</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fa fa-check text-green-400 mt-1 mr-3"></i>
+                        <span class="text-gray-300">准备舒适的徒步鞋 </span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fa fa-check text-green-400 mt-1 mr-3"></i>
+                        <span class="text-gray-300">带上防晒霜、太阳镜和帽子，遮阳伞，夏天紫外线强</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fa fa-check text-green-400 mt-1 mr-3"></i>
+                        <span class="text-gray-300">准备充电宝，保证电子设备随时可用</span>
+                    </li>
+					<li class="flex items-start">
+                        <i class="fa fa-check text-green-400 mt-1 mr-3"></i>
+                        <span class="text-gray-300">随身携带身份证</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fa fa-check text-green-400 mt-1 mr-3"></i>
+                        <span class="text-gray-300">药品清单：感冒药、退烧药、肠胃药、晕车药等</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="bg-gray-800 rounded-xl shadow-lg p-8 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-700">
+                <div class="w-14 h-14 bg-blue-900/30 rounded-full flex items-center justify-center mb-6">
+                    <i class="fa fa-map text-blue-400 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4 text-white">行程注意事项</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start">
+                        <i class="fa fa-check text-green-400 mt-1 mr-3"></i>
+                        <span class="text-gray-300">徒步时结伴而行，不要单独行动</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fa fa-check text-green-400 mt-1 mr-3"></i>
+                        <span class="text-gray-300">保存紧急联系方式</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="bg-gray-800 rounded-xl shadow-lg p-8 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-700">
+                <div class="w-14 h-14 bg-blue-900/30 rounded-full flex items-center justify-center mb-6">
+                    <i class="fa fa-money text-blue-400 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4 text-white">费用预算参考</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start">
+                        <i class="fa fa-check text-green-400 mt-1 mr-3"></i>
+                        <span class="text-gray-300">交通： </span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fa fa-check text-green-400 mt-1 mr-3"></i>
+                        <span class="text-gray-300">餐饮： </span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fa fa-check text-green-400 mt-1 mr-3"></i>
+                        <span class="text-gray-300">住宿： </span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fa fa-check text-green-400 mt-1 mr-3"></i>
+                        <span class="text-gray-300">门票： </span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fa fa-check text-green-400 mt-1 mr-3"></i>
+                        <span class="text-gray-300">其他：购物、娱乐等</span>
+                    </li>
+                </ul>
+                <div class="mt-6 pt-6 border-t border-gray-700">
+                    <h4 class="text-lg font-semibold mb-2 text-white">总预算参考</h4>
+                    <p class="text-xl font-bold text-primary"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <script>
+    // 导航栏滚动效果
+    window.addEventListener('scroll', function () {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('navbar-scrolled');
+      } else {
+        navbar.classList.remove('navbar-scrolled');
+      }
+    });
+
+    // 移动端菜单切换
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', function () {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // 景点小导航栏切换
+    const cityButtons = document.querySelectorAll('.city-btn');
+    cityButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        const city = this.dataset.city;
+        const cityAttractions = document.querySelectorAll('.city-attractions');
+        cityAttractions.forEach(attraction => {
+          attraction.classList.add('hidden');
+        });
+        const selectedAttractions = document.getElementById(city);
+        selectedAttractions.classList.remove('hidden');
+      });
+    });
+
+    // 加载更多景点
+    const loadMoreChongqing = document.getElementById('load-more-chongqing');
+    const moreChongqing = document.getElementById('more-chongqing');
+    loadMoreChongqing.addEventListener('click', function () {
+      moreChongqing.classList.toggle('hidden');
+      if (moreChongqing.classList.contains('hidden')) {
+        this.textContent = '加载更多景点';
+      } else {
+        this.textContent = '隐藏景点';
+      }
+    });
+
+    const loadMoreChangsha = document.getElementById('load-more-changsha');
+    const moreChangsha = document.getElementById('more-changsha');
+    loadMoreChangsha.addEventListener('click', function () {
+      moreChangsha.classList.toggle('hidden');
+      if (moreChangsha.classList.contains('hidden')) {
+        this.textContent = '加载更多景点';
+      } else {
+        this.textContent = '收起景点';
+      }
+    });
+
+    const loadMoreChengdu = document.getElementById('load-more-chengdu');
+    const moreChengdu = document.getElementById('more-chengdu');
+    loadMoreChengdu.addEventListener('click', function () {
+      moreChengdu.classList.toggle('hidden');
+      if (moreChengdu.classList.contains('hidden')) {
+        this.textContent = '加载更多景点';
+      } else {
+        this.textContent = '收起景点';
+      }
+    });
+
+    // 美食小导航栏切换
+    const cityFoodButtons = document.querySelectorAll('.city-food-btn');
+    cityFoodButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        const city = this.dataset.city;
+        const cityFoods = document.querySelectorAll('.city-foods');
+        cityFoods.forEach(food => {
+          food.classList.add('hidden');
+        });
+        const selectedFoods = document.getElementById(city);
+        selectedFoods.classList.remove('hidden');
+      });
+    });
+
+    // 加载更多美食
+    const loadMoreChongqingFood = document.getElementById('load-more-chongqing-food');
+    const moreChongqingFood = document.getElementById('more-chongqing-food');
+    loadMoreChongqingFood.addEventListener('click', function () {
+      moreChongqingFood.classList.toggle('hidden');
+      if (moreChongqingFood.classList.contains('hidden')) {
+        this.textContent = '加载更多美食';
+      } else {
+        this.textContent = '收起美食';
+      }
+    });
+
+    const loadMoreChangshaFood = document.getElementById('load-more-changsha-food');
+    const moreChangshaFood = document.getElementById('more-changsha-food');
+    loadMoreChangshaFood.addEventListener('click', function () {
+      moreChangshaFood.classList.toggle('hidden');
+      if (moreChangshaFood.classList.contains('hidden')) {
+        this.textContent = '加载更多美食';
+      } else {
+        this.textContent = '收起美食';
+      }
+    });
+
+    const loadMoreChengduFood = document.getElementById('load-more-chengdu-food');
+    const moreChengduFood = document.getElementById('more-chengdu-food');
+    loadMoreChengduFood.addEventListener('click', function () {
+      moreChengduFood.classList.toggle('hidden');
+      if (moreChengduFood.classList.contains('hidden')) {
+        this.textContent = '加载更多美食';
+      } else {
+        this.textContent = '收起美食';
+      }
+    });
+
+    // 行程导航切换
+    const itineraryDayButtons = document.querySelectorAll('.itinerary-day-btn');
+    itineraryDayButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        const day = this.dataset.day;
+        const itineraryDayContents = document.querySelectorAll('.itinerary-day-content');
+        itineraryDayContents.forEach(content => {
+          content.classList.add('hidden');
+        });
+        const selectedDayContent = document.getElementById(day);
+        selectedDayContent.classList.remove('hidden');
+      });
+    });
+	
+  </script>
+</body>
+
+</html>
