@@ -165,7 +165,6 @@
         <a href="#home" class="text-white hover:text-primary transition-colors">首页</a>
         <a href="#team" class="text-white hover:text-primary transition-colors">团队信息</a>
         <a href="#attractions" class="text-white hover:text-primary transition-colors">精选景点</a>
-        <a href="#food" class="text-white hover:text-primary transition-colors">美食</a>
         <a href="#itinerary" class="text-white hover:text-primary transition-colors">行程安排</a>
         <a href="#tips" class="text-white hover:text-primary transition-colors">旅行贴士</a>
       </div>
@@ -184,7 +183,6 @@
         <a href="#home" class="text-white hover:text-primary transition-colors py-2">首页</a>
         <a href="#team" class="text-white hover:text-primary transition-colors py-2">团队信息</a>
         <a href="#attractions" class="text-white hover:text-primary transition-colors py-2">精选景点</a>
-        <a href="#food" class="text-white hover:text-primary transition-colors py-2">美食</a>
         <a href="#itinerary" class="text-white hover:text-primary transition-colors py-2">行程安排</a>
         <a href="#tips" class="text-white hover:text-primary transition-colors py-2">旅行贴士</a>
       </div>
@@ -261,11 +259,11 @@
         <h3 class="text-2xl font-bold mb-6">行程基本信息</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <h4 class="text-lg font-medium mb-2">出发时间</h4>
+            <h4 class="text-lg font-medium mb-2">出发时间：7月10号</h4>
             <p class="text-gray-400"> </p>
           </div>
           <div>
-            <h4 class="text-lg font-medium mb-2">集合地点</h4>
+            <h4 class="text-lg font-medium mb-2">集合地点：酒店集合</h4>
             <p class="text-gray-400"> </p>
           </div>
           <div>
@@ -1084,1415 +1082,6 @@
     </div>
   </section>
 
-  <!-- 美食页面 -->
-  <section id="food" class="relative min-h-screen py-20 bg-gradient-to-b from-slate-800 to-slate-900 z-10">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <h2 class="text-[clamp(1.5rem,5vw,3rem)] font-bold mb-4">各地美食</h2>
-        <p class="text-gray-400 max-w-2xl mx-auto">探索不同城市的特色美食</p>
-      </div>
-      <!-- 小导航栏 -->
-      <div class="flex justify-center space-x-4 mb-8">
-        <button class="city-food-btn bg-primary text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
-          data-city="chongqing-food">重庆</button>
-        <button class="city-food-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
-          data-city="changsha-food">长沙</button>
-        <button class="city-food-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
-          data-city="chengdu-food">成都</button>
-      </div>
-      <!-- 美食列表 -->
-      <div id="food-list">
-        <!-- 重庆美食 -->
-        <div id="chongqing-food" class="city-foods">
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- 美食1 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=""
-                  alt="重庆火锅" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">重庆火锅</h3>
-                <p class="text-gray-400 mb-4">重庆火锅以其麻辣鲜香的独特风味而闻名，各种食材在滚烫的锅底中涮煮，十分过瘾  </p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">麻辣</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食2 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="小面" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">重庆小面</h3>
-                <p class="text-gray-400 mb-4">碱水面裹着红油辣子、脆豌豆与榨菜粒，麻辣鲜香直击灵魂 </p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">面食</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">麻辣</span>
-				  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">重庆特色</span>
-                </div>
-              </div>
-            </div>
-			<!-- 美食3 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="花市豌杂面" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">豌杂面</h3>
-                <p class="text-gray-400 mb-4">手工杂酱与耙豌豆拌匀干馏，面条裹满浓稠酱汁，咸香中带微辣，干馏做法拌匀后黏糊糊的超入味 </p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">酱香</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">面食</span>
-				  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">街头小吃</span>
-                </div>
-              </div>
-            </div>
-			<!-- 美食4 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="南山泉水鸡" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">南山泉水鸡</h3>
-                <p class="text-gray-400 mb-4">南山泉水炖煮的鲜嫩鸡肉，麻辣中透着山泉清香，芋儿吸饱汤汁后绵密入味</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">麻辣</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">江湖菜</span>
-                </div>
-              </div>
-            </div>
-			<!-- 美食5 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="万州烤鱼" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">万州烤鱼</h3>
-                <p class="text-gray-400 mb-4">重庆烤鱼发源地的代表，焦香外皮裹着鲜嫩鱼肉，麻辣汤底浸透魔芋、藕片等配菜，宵夜江湖的 “顶流” 美味</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">麻辣</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">烧烤</span>
-				  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">重庆特色</span>
-                </div>
-              </div>
-            </div>
-			<!-- 美食6 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="鸡杂" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">鸡杂</h3>
-                <p class="text-gray-400 mb-4">酸辣泡萝卜与鸡杂同煮的开胃锅物，鸡杂脆嫩、土豆耙软，越煮越香的酸辣味堪称米饭杀手 </p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">酸辣</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">汤锅</span>
-				  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">重庆特色</span>
-                </div>
-              </div>
-            </div>
-			<!-- 美食7 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt=" 碗碗羊肉" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2"> 碗碗羊肉</h3>
-                <p class="text-gray-400 mb-4">用山羊肉慢炖的浓汤，肉质软烂入味，汤头裹挟着花椒的麻香，冬季暖身必点的山城 “暖锅 </p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">麻辣</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">温补</span>
-				  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">地方小吃</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食8 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="老麻抄手" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">老麻抄手</h3>
-                <p class="text-gray-400 mb-4">青花椒爆香的麻辣汤底，抄手皮薄馅嫩，麻味直冲天灵盖</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">麻辣</span>
-				  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">麻香</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">重庆特色</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食9 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="羊肉米粉" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">羊肉米粉</h3>
-                <p class="text-gray-400 mb-4">细腻水粉泡在鲜浓羊汤中，撒上花椒粉与油辣子，清晨来一碗，暖身又满足</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">面食</span>
-				  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">鲜香</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">地方早餐</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食10 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="辣子鸡" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">辣子鸡</h3>
-                <p class="text-gray-400 mb-4">干香酥脆的鸡丁藏在辣椒堆里，麻、辣、香、酥四味合一，是重庆江湖菜的 “麻辣代表作"</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">麻辣</span>
-				  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">干香</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">江湖菜</span>
-                </div>
-              </div>
-            </div>
-			<!-- 美食11 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="来凤鱼" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">来凤鱼</h3>
-                <p class="text-gray-400 mb-4">现杀活鱼裹糊油炸，再入麻辣汤锅，嫩、烫、麻、辣兼具</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">麻辣</span>
-				  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">鲜嫩</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">江湖菜</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食12 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="太安鱼" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">太安鱼</h3>
-                <p class="text-gray-400 mb-4">重庆小面口感筋道，调料丰富，是重庆人最爱的早餐之一  </p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">面食</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">重庆特色</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食13 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="璧山兔" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">璧山兔</h3>
-                <p class="text-gray-400 mb-4">藤椒与仔姜爆炒的兔肉，麻辣中透着清香，兔肉细腻无腥味 </p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">麻辣</span>
-				  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">藤椒香</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">重庆特色</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食14 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="梁山鸡" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">梁山鸡</h3>
-                <p class="text-gray-400 mb-4">药膳红汤炖制的鸡肉，搭配软糯芋儿，麻辣中带着党参、枸杞的药香</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">麻辣</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">药膳</span>
-				  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-			<!-- 美食15 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="酸辣粉" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">酸辣粉</h3>
-                <p class="text-gray-400 mb-4">Q 弹红薯粉浸在酸辣汤底中，配榨菜、花生碎与油辣子，街头巷尾的 “国民小吃”，酸辣过瘾 </p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">酸辣</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">街头小吃</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- 隐藏的更多重庆美食 -->
-          <div id="more-chongqing-food" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden">
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="山城小汤圆" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">山城小汤圆</h3>
-                <p class="text-gray-400 mb-4">软糯黑芝麻馅汤圆配醪糟汤，香甜不腻，是重庆人餐后暖胃的经典甜品</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">香甜</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">软糯</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="凉糕" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">凉糕</h3>
-                <p class="text-gray-400 mb-4">古法石磨的米糕冰凉细腻，浇上红糖浆，夏日解暑的 “碳水快乐”，解辣神器</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">清甜</span>
-				  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">冰凉</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">解暑小吃</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="醪糟" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">醪糟</h3>
-                <p class="text-gray-400 mb-4">糯米甜酒熬煮时加入猪油、核桃，可煮荷包蛋或小汤圆，甜润醇厚的百年非遗美食</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">香甜</span>
-				  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">软糯</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">非遗美食</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="羊角豆干" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">羊角豆干</h3>
-                <p class="text-gray-400 mb-4">百年非遗豆干，细腻绵扎，豆香浓郁，麻辣味嚼着带劲，五香味适合佐酒</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">豆香</span>
-				  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">Q 弹</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">非遗小吃</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="烤苕皮" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">烤苕皮</h3>
-                <p class="text-gray-400 mb-4">炭火烤至起泡的苕皮裹酸萝卜、葱花，糯叽叽的口感中透着酸辣，夜市必吃的 “碳水炸弹”</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">软糯</span>
-				  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">酸辣</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">夜市小吃</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="烤脑花" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">烤脑花</h3>
-                <p class="text-gray-400 mb-4">锡纸包裹脑花烤制，浸透麻辣调料与蒜蓉，绵软如豆腐</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">麻辣</span>
-				  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">绵软</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色烧烤</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="石磨豆花" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">石磨豆花</h3>
-                <p class="text-gray-400 mb-4">非遗技艺制作的嫩滑豆花，配烧椒蘸水，简单却回味无穷</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">嫩滑</span>
-				  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">香辣</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">非遗美食</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="回锅肉" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">回锅肉</h3>
-                <p class="text-gray-400 mb-4">肥瘦相间的五花肉煸炒至微焦，配青椒、蒜苗与豆瓣酱，下酒下饭的 “川渝经典”</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">咸香</span>
-				  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">肥而不腻</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">家常菜</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="冰粉" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">冰粉</h3>
-                <p class="text-gray-400 mb-4">手搓冰粉晶莹剔透，配红糖水、山楂、花生碎，解辣降温的夏日 “灵魂甜品”</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">清甜</span>
-				  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">冰凉</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">解辣甜品</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- 加载更多按钮 -->
-          <div class="mt-12 text-center">
-            <button id="load-more-chongqing-food" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-8 py-3 transition-all transform hover:scale-105 hover:shadow-lg">
-              加载更多美食
-            </button>
-          </div>
-        </div>
-        <!-- 长沙美食 -->
-        <div id="changsha-food" class="city-foods hidden">
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- 美食1 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="臭豆腐" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">长沙臭豆腐</h3>
-                <p class="text-gray-400 mb-4">长沙臭豆腐闻起来臭，吃起来香，是长沙的标志性美食之一  </p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色小吃</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">香辣</span>
-                </div>
-              </div>
-            </div>
-			<!-- 美食2 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="剁椒鱼头" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">剁椒鱼头</h3>
-                <p class="text-gray-400 mb-4">剁椒鱼头以胖头鱼蒸制，红绿剁椒覆盖鱼肉，辣香渗透肌理，鱼肉鲜嫩带微酸</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">经典湘菜</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">香辣</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食3 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="麻辣仔鸡" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2"> 麻辣仔鸡</h3>
-                <p class="text-gray-400 mb-4">鸡肉炸至外焦里嫩，花椒与干辣椒激发出复合香气，辣而不燥 </p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">百年名菜</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">麻辣</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食4 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="发丝牛百叶" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">发丝牛百叶</h3>
-                <p class="text-gray-400 mb-4">牛百叶切如发丝，搭配泡椒快炒，脆嫩口感与酸辣味碰撞 </p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">酸辣</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">下饭菜</span>
-                </div>
-              </div>
-            </div>
-			<!-- 美食5 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="腊味合蒸" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">腊味合蒸</h3>
-                <p class="text-gray-400 mb-4">腊肉、腊鱼、腊鸡同蒸，油脂交融出咸香风味，腊香透骨，是湖南秋冬季节的餐桌灵魂</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">传统蒸菜</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">腊味</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食6 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="东安鸡" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">东安鸡</h3>
-                <p class="text-gray-400 mb-4">嫩母鸡以醋、椒焖制，酸香开胃，肉质滑嫩，兼具酸辣与鲜爽口感</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">酸辣</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">历史名菜</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食7 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="麻仁香酥鸭" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">麻仁香酥鸭</h3>
-                <p class="text-gray-400 mb-4">鸭肉裹芝麻炸至金黄，外皮酥脆带芝麻香，内馅软糯，甜咸交织，是宴席中的经典酥香大菜</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">酥香</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">宴席必备</span>
-                </div>
-              </div>
-            </div>
-			<!-- 美食8 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="德园包子" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">德园包子</h3>
-                <p class="text-gray-400 mb-4">百年茶厅出品，糖馅流蜜、肉馅油润，皮薄馅大</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">面点</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">甜咸可选</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食9 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="甘长顺鸡丝火粉" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">甘长顺鸡丝火粉</h3>
-                <p class="text-gray-400 mb-4">12 小时煨制的鸡汤打底，鸡丝嫩滑，米粉吸满汤汁 </p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">鲜香</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">鸡汤打底</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食10 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="新华楼炸酱刀削面" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">新华楼炸酱刀削面</h3>
-                <p class="text-gray-400 mb-4">北方刀削面改良版，沥干拌入秘制炸酱，面条劲道，酱香浓郁，融合南北风味</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">面食</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">酱香</span>
-                </div>
-              </div>
-            </div>
-			<!-- 美食11 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt=" 糖油粑粑" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2"> 糖油粑粑</h3>
-                <p class="text-gray-400 mb-4">糯米团子裹红糖浆煎至金黄，外脆内糯，红糖甜而不齁</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">甜糯</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">街头小吃</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食12 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="葱油粑粑" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">葱油粑粑</h3>
-                <p class="text-gray-400 mb-4">米浆混合葱花炸制，外皮酥脆带葱香，内部松软，常配甜酒冲蛋组成 “长沙早餐 CP”</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">葱香</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">油炸小吃</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食13 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="刮凉粉" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">刮凉粉</h3>
-                <p class="text-gray-400 mb-4">绿豆粉刮成细条，加蒜蓉、辣椒、麻油拌匀，冰凉滑嫩</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">清凉</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">酸辣</span>
-                </div>
-              </div>
-            </div>
-			<!-- 美食14 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="唆螺" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">唆螺</h3>
-                <p class="text-gray-400 mb-4">田螺剪尾辣炒，紫苏提香，需 “嗦” 着食用，辣汁渗入螺肉，越吃越上瘾的夜市爆款</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">夜市小吃</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">香辣</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食15 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="白粒丸" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">白粒丸</h3>
-                <p class="text-gray-400 mb-4">大米磨浆蒸制的小丸子，配骨头汤、榨菜、辣椒油，软糯有嚼劲</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色小吃</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">香辣</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- 隐藏的更多长沙美食 -->
-          <div id="more-changsha-food" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden">
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="米豆腐" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">米豆腐</h3>
-                <p class="text-gray-400 mb-4">碱水米浆凝固切块，配剁椒、酸豆角炒制，酸辣开胃</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">街头小吃</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">酸辣</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="荷兰粉" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">荷兰粉</h3>
-                <p class="text-gray-400 mb-4">红薯宽粉煮后加肉丝、木耳炒制，Q 弹入味  </p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">夜市小炒</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">鲜香</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="口味虾" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">口味虾</h3>
-                <p class="text-gray-400 mb-4">虾肉饱满，汤汁融紫苏、蒜蓉、小米辣，嗦虾吸汁，辣到冒汗也停不下来</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">香辣</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">夏季限定</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="虾尾" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">虾尾</h3>
-                <p class="text-gray-400 mb-4">去头虾尾更易剥食，辣度集中，常与魔芋、黄瓜同煮，入味更深的 “懒人版” 嗦虾</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">夜市小吃</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">香辣</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="文庙坪兄弟炸炸炸" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">文庙坪兄弟炸炸炸</h3>
-                <p class="text-gray-400 mb-4">先炸后炒的炸串，包菜、牛油、鸡皮刷秘制酱料</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">香辣</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">网红炸串</span>
-				  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">街头实惠</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="杨嗲甜酒" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">杨嗲甜酒</h3>
-                <p class="text-gray-400 mb-4">三十年老字号甜酒冲蛋，加糯米小丸子，酒香清甜，暖身又解辣的街头甜品</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">甜糯</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">解辣神器</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="阳记紫苏桃子姜" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">阳记紫苏桃子姜</h3>
-                <p class="text-gray-400 mb-4">桃子、姜用紫苏腌制，酸甜微辣，清爽解腻</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">酸甜</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">解暑甜品</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="金丝牛肉饼" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">金丝牛肉饼</h3>
-                <p class="text-gray-400 mb-4">层层酥皮包裹爆汁牛肉馅，咬开瞬间肉香四溢</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">酥香</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">肉馅爆汁</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="肉丝粉" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">肉丝粉</h3>
-                <p class="text-gray-400 mb-4">扁粉配猪骨汤，现炒肉丝盖码，长沙人早餐的 “仪式感”—— 嗦粉喝汤，一滴不剩</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">鲜香</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">粉面</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="烧麦" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">烧麦</h3>
-                <p class="text-gray-400 mb-4">糯米、油渣、胡椒为馅</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">咸香</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">糯米控必吃</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="皱纱馄饨" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">皱纱馄饨</h3>
-                <p class="text-gray-400 mb-4">双燕馄饨店出品，皮如薄纱，肉馅鲜嫩，汤头配排冬菜提鲜</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">鲜香</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">老字号馄饨</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="桂花糖饺" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">桂花糖饺</h3>
-                <p class="text-gray-400 mb-4">糯米粉炸制后裹白糖桂花，外皮酥脆，内里软糯，甜香中带桂花香的怀旧小吃</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">甜香</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">油炸面点</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="三角豆腐" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">三角豆腐</h3>
-                <p class="text-gray-400 mb-4">火宫殿特色炸物，三角形豆腐外脆内嫩，蘸甜辣酱食用，比传统臭豆腐更 “温和” 的选择</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">香辣</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">油炸豆腐</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="唆螺炒饭" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">唆螺炒饭</h3>
-                <p class="text-gray-400 mb-4">后湖夜市创新菜，螺蛳肉与米饭同炒，紫苏、辣椒提味，鲜香入味的 “夜市碳水炸弹”</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">香辣</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">夜市创新</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="浏阳茴饼" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">浏阳茴饼</h3>
-                <p class="text-gray-400 mb-4">百年糕点，糖皮包酥，内馅含茴香、芝麻，甜而不腻，火宫殿可寻的 “非遗味道”</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">甜香</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">油炸面点</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- 加载更多按钮 -->
-          <div class="mt-12 text-center">
-            <button id="load-more-changsha-food" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-8 py-3 transition-all transform hover:scale-105 hover:shadow-lg">
-              加载更多美食
-            </button>
-          </div>
-        </div>
-        <!-- 成都美食 -->
-        <div id="chengdu-food" class="city-foods hidden">
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- 美食1 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="龙抄手" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">龙抄手</h3>
-                <p class="text-gray-400 mb-4">龙抄手皮薄馅大，汤汁鲜美，是成都的特色面食之一  </p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">面食</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-			<!-- 美食2 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="牛油火锅" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">牛油火锅</h3>
-                <p class="text-gray-400 mb-4">五斤牛油一斤料的醇厚锅底，搭配耙牛肉、鲜毛肚等食材，麻辣鲜香越煮越入味，是成都火锅的灵魂代表</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">火锅</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食3 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="清油火锅" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">清油火锅</h3>
-                <p class="text-gray-400 mb-4">相较于牛油更清爽解腻，以菜籽油为基底，辣而不燥，适合搭配嫩牛肉、黄喉等食材</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">火锅</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食4 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="热锅串串香" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">热锅串串香</h3>
-                <p class="text-gray-400 mb-4">竹签串起荤素食材，在沸腾红锅中涮煮，搭配干碟或油碟，市井烟火气十足，又称 “串串火锅”</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">小吃</span>
-				  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">火锅</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食5 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="冷锅串串" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">冷锅串串</h3>
-                <p class="text-gray-400 mb-4">提前煮好的串串浸泡在红油汤底中，入口即辣，夏天搭配冰粉堪称绝配</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">小吃</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食6 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="钟水饺" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">钟水饺</h3>
-                <p class="text-gray-400 mb-4">淋上甜辣交织的红油蘸汁，搭配银耳汤解腻</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">面食</span>
-				  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">小吃</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食7 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="甜水面" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">甜水面</h3>
-                <p class="text-gray-400 mb-4">豌豆粉制成的凉粉，淋上红油、蒜泥、小米辣，辣到 “伤心” 却停不下筷子</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">面食</span>
-				  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">小吃</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食8 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="伤心凉粉" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">伤心凉粉</h3>
-                <p class="text-gray-400 mb-4">豌豆粉制成的凉粉，淋上红油、蒜泥、小米辣，辣到 “伤心” 却停不下筷子 </p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">小吃</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食9 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="三大炮" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">三大炮</h3>
-                <p class="text-gray-400 mb-4">糯米团抛向铜板发出三声响，裹上黄豆粉和红糖，软糯香甜</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">甜点</span>
-				  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">小吃</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食10 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="糖油果子" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">糖油果子</h3>
-                <p class="text-gray-400 mb-4">外酥内糯的糯米球，裹焦糖外壳撒芝麻</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">甜点</span>
-				  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">小吃</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食11 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="蛋烘糕" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">蛋烘糕</h3>
-                <p class="text-gray-400 mb-4">铜锅烤制的薄饼，可甜可咸，奶油肉松、麻辣牛肉等创意馅料让传统小吃焕发新活力</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">面食</span>
-				  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">小吃</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食12 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="叶儿粑" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">叶儿粑</h3>
-                <p class="text-gray-400 mb-4">糯米皮包裹芽菜肉末，用芭蕉叶蒸熟，清香软糯，兼具主食与小吃的双重属性</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">面食</span>
-				  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">小吃</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食13 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="锅盔夹凉粉" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">锅盔夹凉粉</h3>
-                <p class="text-gray-400 mb-4">酥脆锅盔夹入麻辣凉粉，热与冷、脆与软的口感碰撞，街头快餐的巧妙搭配</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">面食</span>
-				  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">小吃</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食14 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="肥肠粉" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">肥肠粉</h3>
-                <p class="text-gray-400 mb-4">红薯粉配软糯肥肠，鲜香麻辣的汤底搭配油酥锅盔，成都人早餐的 “重口味” 标配</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">面食</span>
-				  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">小吃</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-            <!-- 美食15 -->
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="双流老妈兔头" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">双流老妈兔头</h3>
-                <p class="text-gray-400 mb-4">麻辣兔头肉质细嫩，嗦指留香，成都必打卡的经典下酒菜，宵夜摊的灵魂担当</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">小吃</span>
-                  <span class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- 隐藏的更多成都美食 -->
-          <div id="more-chengdu-food" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden">
-            <div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="钵钵鸡" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">钵钵鸡</h3>
-                <p class="text-gray-400 mb-4">乐山传入的冷串，鸡肉和素菜浸在红油或藤椒汤底中，麻辣鲜香，适合多人分享</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">小吃</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="冒菜" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">冒菜</h3>
-                <p class="text-gray-400 mb-4">自选食材在麻辣汤底中煮熟，淋红油后似 “一人食火锅”，下饭又过瘾</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">小吃</span>
-				  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">主菜</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="麻婆豆腐" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">麻婆豆腐</h3>
-                <p class="text-gray-400 mb-4">嫩滑豆腐配牛肉末，以豆瓣酱、花椒炒出麻辣味，陈麻婆豆腐店的百年经典，下饭神器</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">主菜</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="回锅肉" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">回锅肉</h3>
-                <p class="text-gray-400 mb-4">肥瘦相间的猪肉切片，与蒜苗、豆瓣酱炒制，家常味中的川味代表，咸香微辣</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">主菜</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="夫妻肺片" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">夫妻肺片</h3>
-                <p class="text-gray-400 mb-4">牛头皮、牛舌等拌入红油，麻辣鲜香，总府路老店的招牌菜，凉菜中的 “硬菜”</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">凉菜</span>
-				  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">主菜</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="自贡冷吃兔" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">自贡冷吃兔</h3>
-                <p class="text-gray-400 mb-4">兔肉丁与干辣椒、花椒炒制，麻辣鲜香，可作零食或下酒菜，自贡风味的成都缩影</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">主菜</span>
-				  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">小吃</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="毛血旺" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">毛血旺</h3>
-                <p class="text-gray-400 mb-4">鸭血、毛肚、黄喉等在红汤中炖煮，麻辣浓郁，食材丰富的下饭硬菜</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">主菜</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="辣子鸡" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">辣子鸡</h3>
-                <p class="text-gray-400 mb-4">鸡肉丁与干辣椒爆炒，外酥里嫩，麻辣过瘾，考验 “在辣椒里找肉” 的技巧</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">主菜</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="宜宾燃面" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">宜宾燃面</h3>
-                <p class="text-gray-400 mb-4">油辣子、猪油、芝麻油拌细面，搭配芽菜肉末，干香入味，成都街头的 “网红” 面食</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">主菜</span>
-				  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">面食</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="灯影牛肉丝" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">灯影牛肉丝</h3>
-                <p class="text-gray-400 mb-4">牛肉丝薄如纸，麻辣香甜，可作零食或下酒菜，传统工艺的川味代表</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">小吃</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="樟茶鸭" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">樟茶鸭</h3>
-                <p class="text-gray-400 mb-4">鸭肉经樟树叶和茶叶熏制，外皮酥脆，内肉鲜嫩，川菜中少有的熏制美味</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">主菜</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="冰粉" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">冰粉</h3>
-                <p class="text-gray-400 mb-4">手搓冰粉带密集气泡，加红糖、醪糟、糍粑等，火锅解辣标配，夏日街头的清凉担当</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">甜点</span>
-				  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">小吃</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="凉糕" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">凉糕</h3>
-                <p class="text-gray-400 mb-4">糯米制成的凉糕，淋红糖浆，口感软糯清甜，与火锅的麻辣形成绝妙反差</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">甜点</span>
-				  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">小吃</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="乐山甜皮鸭" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">乐山甜皮鸭</h3>
-                <p class="text-gray-400 mb-4">成都也能吃到的乐山特色，外皮酥脆、肉质甜香的烤鸭，区别于传统川味的甜蜜口感</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">主菜</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="乐山跷脚牛肉" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">乐山跷脚牛肉</h3>
-                <p class="text-gray-400 mb-4">药膳汤底煮牛肉牛杂，鲜香滋补，搭配干辣椒蘸碟，乐山风味的成都新宠</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">主菜</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="西昌火盆烧烤" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">西昌火盆烧烤</h3>
-                <p class="text-gray-400 mb-4">大块肉串在火盆上烤制，搭配秘制辣椒面，豪迈过瘾的凉山风味</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">主菜</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="绵阳米粉" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">绵阳米粉</h3>
-                <p class="text-gray-400 mb-4">细米粉配红汤或清汤臊子（牛肉 / 肥肠），成都早餐店常见的绵阳特色</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">面食</span>
-				  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">小吃</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="海味面" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">海味面</h3>
-                <p class="text-gray-400 mb-4">海鲜干货熬汤，配手工细面，汤鲜面韧，成都少见的清淡面食</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">面食</span>
-				  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">清淡</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="怪味面" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">怪味面</h3>
-                <p class="text-gray-400 mb-4">麻辣酸甜咸五味交融，猪骨海鲜汤底 + 十几种调料，牛王庙老字号必吃</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">面食</span>
-				  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">老字号</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">特色美食</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="豆汤饭" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">豆汤饭</h3>
-                <p class="text-gray-400 mb-4">白豌豆炖烂成沙，浓汤泡饭，配凉拌菜，成都人暖心早餐首选</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">主食</span>
-				  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">小吃</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">非遗美食</span>
-                </div>
-              </div>
-            </div>
-			<div class="attraction-card bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              <div class="relative h-56 overflow-hidden">
-                <img src=" "
-                  alt="馓子豆花" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">馓子豆花</h3>
-                <p class="text-gray-400 mb-4">嫩豆花浇红油，撒酥脆馓子，酸辣开胃，谭豆花老店招牌</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">小吃</span>
-				  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">辣口</span>
-                  <span class="bg-secondary/20 text-secondary text-xs px-3 py-1 rounded-full">传统美食</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- 加载更多按钮 -->
-          <div class="mt-12 text-center">
-            <button id="load-more-chengdu-food" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-8 py-3 transition-all transform hover:scale-105 hover:shadow-lg">
-              加载更多美食
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- 行程安排 -->
   <section id="itinerary" class="relative min-h-screen py-20 bg-gradient-to-b from-slate-900 to-slate-800 z-10">
     <div class="container mx-auto px-4">
@@ -2505,266 +1094,842 @@
       <div class="flex overflow-x-auto pb-4 mb-8 space-x-2">
         <button class="itinerary-day-btn bg-primary text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
           data-day="day-1">
-          第一天
+          第一天：长沙
         </button>
         <button class="itinerary-day-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
           data-day="day-2">
-          第二天
+          第二天：长沙
         </button>
         <button class="itinerary-day-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
           data-day="day-3">
-          第三天
+          第三天：长沙
         </button>
         <button class="itinerary-day-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
           data-day="day-4">
-          第四天
+          第四天：长沙
         </button>
         <button class="itinerary-day-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
           data-day="day-5">
-          第五天
+          第五天：重庆
         </button>
         <button class="itinerary-day-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
           data-day="day-6">
-          第六天
+          第六天：重庆
         </button>
         <button class="itinerary-day-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
           data-day="day-7">
-          第七天
+          第七天：重庆
         </button>
         <button class="itinerary-day-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
           data-day="day-8">
-          第八天
+          第八天：重庆
         </button>
         <button class="itinerary-day-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
           data-day="day-9">
-          第九天
+          第九天：成都
         </button>
         <button class="itinerary-day-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
           data-day="day-10">
-          第十天
+          第十天：成都
         </button>
 		<button class="itinerary-day-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
           data-day="day-11">
-          第十一天
+          第十一天：成都
         </button>
         <button class="itinerary-day-btn bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-lg px-6 py-3 whitespace-nowrap transition-all transform hover:scale-105 hover:shadow-lg"
           data-day="day-12">
-          第十二天
+          第十二天：成都
         </button>
 
       </div>
 
       <!-- 行程内容 -->
       <div id="itinerary-content">
-        <!-- 第一天行程 -->
+        <!-- 第一天行程  -->
         <div id="day-1" class="itinerary-day-content bg-dark/40 backdrop-blur-sm rounded-xl p-8 shadow-lg">
-          <h3 class="text-2xl font-bold mb-6">第一天： </h3>
+          <h3 class="text-2xl font-bold mb-6">第一天：长沙  </h3>
 
           <div class="timeline">
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400"> </p>
+              <h4 class="text-lg font-medium mb-1">17:00</h4>
+              <p class="text-gray-400">酒店集合</p>
             </div>
 
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
+              <h4 class="text-lg font-medium mb-1"> 18:00</h4>
+              <p class="text-gray-400">第一天在酒店附近逛逛</p>
+			  <p class="text-gray-400"> 如附近夜市</p>
+            </div>
+
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"></h4>
+              <p class="text-gray-400">今天好好休息 </p>
+            </div>
+
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1"></h4>
               <p class="text-gray-400">  </p>
             </div>
 
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400"> </p>
+              <h4 class="text-lg font-medium mb-1">  </h4>
+              <p class="text-gray-400">  </p>
             </div>
 
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400"> </p>
-            </div>
-
-            <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400"> </p>
-            </div>
-
-            <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400"> </p>
+              <h4 class="text-lg font-medium mb-1">  </h4>
+              <p class="text-gray-400">  </p>
             </div>
           </div>
         </div>
 
         <!-- 第二天行程 -->
         <div id="day-2" class="itinerary-day-content hidden bg-dark/40 backdrop-blur-sm rounded-xl p-8 shadow-lg">
-          <h3 class="text-2xl font-bold mb-6">第二天： </h3>
+          <h3 class="text-2xl font-bold mb-6">第二天：长沙 </h3>
           <div class="timeline">
+		    <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">路线规划： </h4>
+              <p class="text-gray-400">五一广场→国金中心→黄兴步行街→南门口→杜甫江阁→东瓜山夜市</p>
+            </div>
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400"> </p>
+              <h4 class="text-lg font-medium mb-1">8：00 出发五一广场</h4>
+			  <p class="text-gray-400">1、拍照打卡：</p>
+			  <p class="text-gray-400">广场中央的「长沙」大字雕塑，早起人少，避免正午顶光 </p>
+			  <p class="text-gray-400">2、地下商城：</p>
+			  <p class="text-gray-400">悦方 ID MALL负一层，休闲餐饮和特色小吃为主，打卡迷你超级文和友，买杯茶颜悦色「烟火易冷」（红茶底 + 坚果香，适配早间清爽） </p>
+			  <p class="text-gray-400">3、避坑：别在广场买“天价纪念品“，文创店藏在地下商城深处（性价比更高） </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
             </div>
 
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400"> </p>
+              <h4 class="text-lg font-medium mb-1"> 9：00 步行到国金中心</h4>
+			  <p class="text-gray-400">1、拍照打卡： </p>
+			  <p class="text-gray-400">7 楼天台的 KAWS 雕塑是必拍点 </p>
+			  <p class="text-gray-400">建议上午 10 点前或傍晚前往避开人流</p>
+			  <p class="text-gray-400">商场正对面的 “司门口” 公交站旁，晚上 19:00 后可拍摄裸眼 3D 爱心屏，捕捉动态光影效果</p>
+			  <p class="text-gray-400">2、商场： </p>
+			  <p class="text-gray-400">1 楼看 LV/GUCCI 橱窗（设计感拉满）</p>
+			  <p class="text-gray-400">6 楼「墨茉点心局」买鲜肉月饼（现烤酥脆，咸甜口），当伴手礼试吃 </p>
+			  <p class="text-gray-400">3、高空拍照： </p>
+			  <p class="text-gray-400">天台边缘的「长沙天际线」标识处，仰拍国金 + 湘江 </p>
+			  <p class="text-gray-400">天气好时，岳麓山轮廓清晰可见</p>
+			  <p class="text-gray-400">4、打卡：</p> 
+			  <p class="text-gray-400">L7 花园角落有长沙方言墙，适合拍照 </p>
+			  <p class="text-gray-400">LG2 至 L7 层正在举办免费艺术展《奇妙理想国》（即日起至 7 月 20 日） </p>
+			  <p class="text-gray-400">与毛绒小怪兽装置互动，适合亲子和拍照 </p>
             </div>
 
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400"> </p>
+              <h4 class="text-lg font-medium mb-1">11:00 午餐-郝富贵小炒肉</h4>
+              <p class="text-gray-400">郝富贵小炒肉：</p>
+			  <p class="text-gray-400">菜单推荐： </p>
+			  <p class="text-gray-400">1、招牌小炒肉：配米饭必点！外地胃选微辣 </p>
+			  <p class="text-gray-400">2、香辣甜虾：虾肉鲜嫩，辣中带甜 </p>
+			  <p class="text-gray-400">3、酸萝卜炒肚丝：酸萝卜解腻，肚丝脆嫩，酸辣口超开胃 </p>
+			  <p class="text-gray-400">4、糖油粑粑：外脆内糯，红糖浆不齁甜，比街头更精致（餐后吃，解辣 </p>
+			  <p class="text-gray-400">5、甜品：桂花冰豆粉，酸梅汤</p>
+			  <p class="text-gray-400">6、用餐建议： </p>
+			  <p class="text-gray-400">11:30 前到店！本地上班族 + 游客双排队  </p>
+			  <p class="text-gray-400">环境是老社区改造，二楼靠窗位能拍街景，复古红砖墙很出片 </p>
+			  <p class="text-gray-400"> </p>
             </div>
 
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400"> </p>
+              <h4 class="text-lg font-medium mb-1">13:00 乘车到黄兴步行街</h4>
+              <p class="text-gray-400">1、北正街（历史区）： </p>
+			  <p class="text-gray-400">苏家巷文创店： </p>
+			  <p class="text-gray-400">选购长沙手信（如铜官窑陶瓷、湘绣书签），感受本地文化  </p>
+			  <p class="text-gray-400">超级文和友（黄兴街店）：</p>
+			  <p class="text-gray-400">拍摄复古市井场景（如 “老长沙理发店”“粮油店” 布景）</p>
+			  <p class="text-gray-400">不建议在此吃正餐（人多排队久），快速拍照后离开  </p>
+			  <p class="text-gray-400">2、中心广场： </p>
+			  <p class="text-gray-400">拍照打卡： </p>
+			  <p class="text-gray-400">与「臭豆腐雕塑」合影，打卡巨型 LED 屏</p>
+			  <p class="text-gray-400">傍晚 19:00 有灯光秀，可提前占C 位 </p>
+			  <p class="text-gray-400">小吃： </p>
+			  <p class="text-gray-400">黑色经典臭豆腐： </p>
+			  <p class="text-gray-400">点「肉酱 + 剁椒双拼」，店内免费加汤，外脆里嫩（趁热吃） </p>
+			  <p class="text-gray-400">茶颜悦色（概念店）： </p>
+			  <p class="text-gray-400">推荐「三季虫」（红茶底 + 坚果香），加「奶油顶 + 碧根果」，端到店外台阶坐着喝，感受步行街人潮 </p>
+			  <p class="text-gray-400">3、南片区（夜市预热）： </p>
+			  <p class="text-gray-400">金记糖油佗佗（南门口方向分店）： </p>
+			  <p class="text-gray-400">买「全家福套餐」（糖油佗佗 + 绿豆沙 + 桂花糖） </p>
+			  <p class="text-gray-400">绿豆沙可解辣，糖油佗佗外脆内糯（浅尝即可，留肚子到南门口 </p>
+			  <p class="text-gray-400">4、太平老街与坡子街 </p>
+			  <p class="text-gray-400">太平老街的 “脑子进水文创店” 可免费盖 20 + 长沙特色印章，消费饮品还能带走明信片 </p>
+			  <p class="text-gray-400">坡子街派出所的 “守护解放西” 同款灯牌值得打卡  </p>
+			  <p class="text-gray-400">  </p>
             </div>
 
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400"> </p>
+              <h4 class="text-lg font-medium mb-1">17:00 步行到南门口</h4>
+              <p class="text-gray-400">南门口老长沙美食： </p>
+			  <p class="text-gray-400">1、金记糖油佗佗（总店）： </p>
+			  <p class="text-gray-400">排队现炸糖油佗佗，建议买「半份」（现炸外脆内糯，红糖裹满），避免吃撑 </p>
+			  <p class="text-gray-400">2、湘军剁辣椒： </p>
+			  <p class="text-gray-400">试吃「茶油剁椒」（中辣度适中），可买常温保存的瓶装作为伴手礼 </p>
+			  <p class="text-gray-400">3、南门口湘军米粉： </p>
+			  <p class="text-gray-400">点「牛肉粉 + 酸豆角 + 紫苏叶」，骨汤汤底鲜浓，紫苏提香，酸豆角解腻</p>
+			  <p class="text-gray-400">4、阿婆冰粉： </p>
+			  <p class="text-gray-400">藏在菜场深处，手搓冰粉搭配红糖糍粑，10 元一碗性价比高，解辣又解暑 </p>
+			  <p class="text-gray-400">5、天马牛肉饼： </p>
+			  <p class="text-gray-400">现烤牛肉饼外皮酥脆，内馅多汁，买一个边走边吃 </p>
+			  <p class="text-gray-400"> </p>
             </div>
 
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
+              <h4 class="text-lg font-medium mb-1">19:00 步行到杜甫江阁（沿湘江边散步） </h4>
+              <p class="text-gray-400">登阁攻略 </p>
+			  <p class="text-gray-400">1、门票：</p>
+			  <p class="text-gray-400">现场 11 元，美团提前买 9.9 元（无需换票，刷码进） </p>
+			  <p class="text-gray-400">2、日落拍摄： </p>
+			  <p class="text-gray-400">18:30 前到，登 2 楼观景台（无遮挡看湘江），拍江阁落日余晖（夏季日落约 19:30，提前查看天气） </p>
+			  <p class="text-gray-400">3、夜景拍摄: </p>
+			  <p class="text-gray-400">19:00 江阁亮灯（暖黄色仿唐灯光），4 楼拍全景（爬楼梯，视野更开阔） </p>
+			  <p class="text-gray-400">4、沿江散步： </p>
+			  <p class="text-gray-400">从江阁西侧亲水平台向北走，看对岸橘子洲头毛像夜景 </p>
+			  <p class="text-gray-400">5、注意： </p>
+			  <p class="text-gray-400">4 楼风大，带件薄外套；楼梯较陡，注意安全 </p>
+            </div>
+			<div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">20:00 东瓜山夜市 </h4>
+              <p class="text-gray-400">美食推荐： </p>
+			  <p class="text-gray-400">1、盟重烧烤（冬瓜山店）： </p>
+			  <p class="text-gray-400">牛油小串：咬开爆油，奶香味足，撒白糖提鲜，辣度选“微辣 + 蜂蜜” </p>
+			  <p class="text-gray-400">紫苏烤黄瓜：解腻神器，紫苏增香，外焦内润 </p>
+			  <p class="text-gray-400">湘西小串牛肉：腌料带孜然，配蒜片吃更过瘾 </p>
+			  <p class="text-gray-400">避雷：</p>
+			  <p class="text-gray-400">别点 “创意菜”（如烤菠萝）；可提前线上取号 </p>
+			  <p class="text-gray-400">2、古月胡炸炸（冬瓜山四村店）： </p>
+			  <p class="text-gray-400">里脊肉：裹面糊炸至金黄，蘸「甜辣酱 + 孜然粉」双拼 </p>
+			  <p class="text-gray-400">韭菜 + 金针菇：整根炸，保留汁水，蘸酱后甜辣回香 </p>
+			  <p class="text-gray-400">兰花干 + 方便面：兰花干吸满酱料爆汁，加方便面解锁 “碳水炸弹” </p>
+			  <p class="text-gray-400">注意： </p>
+			  <p class="text-gray-400">自己端盘选现串鲜货（冰柜现串，别买预制丸类</p>
+			  <p class="text-gray-400">交给老板炸，出锅前喊 “多撒孜然” </p>
+			  <p class="text-gray-400">3、幸福的味道（糖水铺）: </p>
+			  <p class="text-gray-400">绿豆沙：现煮沙质感足，加桂花蜜 / 陈皮，冰的更解辣</p>
+			  <p class="text-gray-400">糖油粑粑：小颗现炸，红糖浆不齁甜，外脆内糯，比黄兴街正宗 </p>
+			  <p class="text-gray-400">手搓冰粉：配山楂碎 + 葡萄干，朴实无华 </p>
+			  <p class="text-gray-400">避雷： </p>
+			  <p class="text-gray-400">别碰 “网红新品”（如杨枝甘露，信任传统糖水更稳） </p>
+			  <p class="text-gray-400">4、避雷： </p>
+			  <p class="text-gray-400">1、店铺雷区： </p>
+			  <p class="text-gray-400">主街 “网红炸串店”：排队 1 小时，味道普通（不如支路老店） </p>
+			  <p class="text-gray-400">高价 “文创奶茶”别碰！喝本地「果呀呀」（冬瓜山有分店，点「芒果雪乐」） </p>
+			  <p class="text-gray-400">2、菜品雷区 </p>
+			  <p class="text-gray-400">炸串别选 “冷冻丸类”（淀粉多，不如吃肉串 / 蔬菜） </p>
+			  <p class="text-gray-400">烧烤别点 “大油边”（肥腻） </p>
+			  <p class="text-gray-400">3、排队雷区： </p>
+			  <p class="text-gray-400">盟重烧烤：线上取号后，算好时间再去（过号可顺延，别干等 </p>
+			  <p class="text-gray-400">糖水铺：幸福的味道不用排队，别被 “排队网红店” 忽悠 </p>
+			  <p class="text-gray-400">4、卫生雷区： </p>
+			  <p class="text-gray-400">路边摊生冷食物（如凉拌菜）慎买 </p>
+			  <p class="text-gray-400">炸物 / 烧烤选明档操作的店（能看到食材处理） </p>
+            </div>
+			<div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">22:00 回酒店休息 </h4>
               <p class="text-gray-400"> </p>
+            </div>
+			<div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">注意： </h4>
+              <p class="text-gray-400">1、排队： </p>
+			  <p class="text-gray-400">郝富贵：11:30 前到店 </p>
+			  <p class="text-gray-400">KAWS 雕塑：国金中心 10 点刚开门时人最少，先拍照再购物 </p>
+			  <p class="text-gray-400">2、美食避雷： </p>
+			  <p class="text-gray-400">黄兴街别碰 “网红奶茶”，认准茶颜悦色、果呀呀（本地品牌） </p>
+			  <p class="text-gray-400">南门口别买 “天价水果”，菜场深处更实惠 </p>
+			  <p class="text-gray-400">3、准备： </p>
+			  <p class="text-gray-400">备舒适鞋（日均 2 万步 +），随身带小瓶水（长沙夏季炎热，补水！） </p>
+			  <p class="text-gray-400">小吃买 “小份”，预留肚子给冬瓜山夜市（返程顺路打卡），比如「盟重烧烤」的牛油小串 </p>
+			  <p class="text-gray-400">4、拍照装备： </p>
+			  <p class="text-gray-400">手机足够（长沙光线好） </p>
+			  <p class="text-gray-400">穿浅色衣服，与红墙、夜景更搭 </p>
+			  <p class="text-gray-400">5、超级文和友免门票但需排队，可关注官方小程序实时查看等位情况 </p>
             </div>
           </div>
         </div>
         <!-- 第三天行程 -->
         <div id="day-3" class="itinerary-day-content hidden bg-dark/40 backdrop-blur-sm rounded-xl p-8 shadow-lg">
-          <h3 class="text-2xl font-bold mb-6">第三天： </h3>
+          <h3 class="text-2xl font-bold mb-6">第三天：长沙 </h3>
           <div class="timeline">
+		    <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">路线规划：</h4>
+              <p class="text-gray-400">橘子洲→登高路美食街→岳麓山南门→爱晚亭→岳麓书院→湖南大学→麓山南路 </p>
+            </div>
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400"> </p>
+              <h4 class="text-lg font-medium mb-1">橘子洲预约准备： </h4>
+			  <p class="text-gray-400">1、提前 1-3 天在 “岳麓山橘子洲旅游区” 公众号 预约橘子洲门票</p>
+			  <p class="text-gray-400">门票免费，分时段：如 7:00-12:00 等，旺季建议约最早时段 </p>
+              <p class="text-gray-400">2、小火车 20 元 / 人往返，现场扫码买或预约时加购 </p>
+			  <p class="text-gray-400">共 5 站："橘子洲站→问天台→沙滩公园→毛主席雕像→返程"，建议买往返！走路全程约 5 公里，超累 </p>
+			  <p class="text-gray-400">3、若住五一广场：地铁 2 号线 直达橘子洲站（1 号口出），约 15 分钟 </p>
+			  <p class="text-gray-400">出口右转 50 米就是小火车候车点，认准 “橘子洲头方向” 排队 </p>
+            </div>
+			
+			<div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">岳麓山&岳麓书院预约准备： </h4>
+              <p class="text-gray-400">预约准备：（选 南门进，东门出，更省力） </p>
+			  <p class="text-gray-400">1、岳麓山：</p>
+			  <p class="text-gray-400">免费，提前在 “岳麓山风景名胜区” 公众号 预约 </p>
+			  <p class="text-gray-400">2、岳麓书院： </p>
+			  <p class="text-gray-400">40 元 / 人（学生半票），单独在 “岳麓书院” 公众号 预约 </p>
+			  <p class="text-gray-400">（7:50-17:30开放，17:30 停止售票，17:40停止入园） </p>
+			  <p class="text-gray-400">（免费，分时段：如 7:00-12:00 等，旺季建议约最早时段）  </p>
             </div>
             
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400"> </p>
+              <h4 class="text-lg font-medium mb-1">9:00 前往橘子洲 </h4>
+              <p class="text-gray-400">游玩拍照： </p>
+			  <p class="text-gray-400">1、“毛主席雕像”打卡： </p>
+			  <p class="text-gray-400">小火车坐到 终点站（橘子洲头）,拍全景照（雕像 + 湘江 + 岳麓山同框，上午顺光） </p>
+			  <p class="text-gray-400">绕雕像侧面，拍 特写镜头（伟人凝视湘江，气势磅礴）,注意避开人群 </p>
+			  <p class="text-gray-400">雕像后方 问天台：台阶上拍 “人与雕像” 互动感，仿佛对话历史 </p>
+			  <p class="text-gray-400">2、避雷： </p>
+			  <p class="text-gray-400">别买 “橘子洲全景票”！门票已含所有景点，小火车按需买 </p>
+			  <p class="text-gray-400">洲上蚊虫多，带驱蚊水；夏季正午暴晒，撑伞 + 戴帽 </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
             </div>
             
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400"> </p>
+              <h4 class="text-lg font-medium mb-1">11：00 午餐-登高路美食街 </h4>
+              <p class="text-gray-400">美食： </p>
+			  <p class="text-gray-400">1、和记美食： </p>
+			  <p class="text-gray-400">杂酱粉、卤蛋：米粉口感爽滑，杂酱酱香浓郁，搭配入味的卤蛋 </p>
+			  <p class="text-gray-400">2、向群锅饺： </p>
+			  <p class="text-gray-400">鲜肉锅饺：现点现做，外皮焦脆，内馅多汁，搭配店内的甜酒冲蛋或海带龙骨汤 </p>
+			  <p class="text-gray-400">3、白色精品臭豆腐：</p>
+			  <p class="text-gray-400">外皮酥脆，内里嫩滑如豆花，汤汁用蔬菜熬制，鲜辣不腻 </p>
+			  <p class="text-gray-400">4、伍氏猪脚： </p>
+			  <p class="text-gray-400">猪脚、兰花干：猪脚炖得软烂入味，Q 弹有嚼劲，搭配吸饱汤汁的兰花干 </p>
+			  <p class="text-gray-400">5、帅哥烧饼 </p>
+			  <p class="text-gray-400">梅干菜烧饼、鲜肉烧饼：梅干菜咸香微甜，鲜肉馅多汁不腻 </p>
+			  <p class="text-gray-400">6、建议： </p>
+			  <p class="text-gray-400">可尝试臭豆腐配糖油粑粑，或猪脚配解腻的酸梅汤，体验地道组合 </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+            </div>
+			
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">13：00 步行到岳麓山南门</h4>
+              <p class="text-gray-400">南门入园后，沿 主路直行，途经 观光长廊（俯瞰长沙城景，可拍全景） </p>
+			  <p class="text-gray-400">1、景点拍照： </p>
+			  <p class="text-gray-400">爱晚亭： </p>
+			  <p class="text-gray-400">中国四大名亭之一，红柱绿瓦 </p>
+			  <p class="text-gray-400">夏季绿树成荫，秋天枫叶如火 </p>
+			  <p class="text-gray-400">2、避雷： </p>
+			  <p class="text-gray-400">别信 “爱晚亭旁算命”，纯商业套路 </p>
             </div>
             
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
+              <h4 class="text-lg font-medium mb-1"> 14:30 步行到岳麓书院 </h4>
+              <p class="text-gray-400">从爱晚亭沿 石阶往下（或走平路），导航 “岳麓书院”，途经 半山亭（可拍照） </p>
+			  <p class="text-gray-400">游玩: </p>
+			  <p class="text-gray-400">1、大门： </p>
+			  <p class="text-gray-400">“惟楚有材，于斯为盛” 对联可拍 </p>
+			  <p class="text-gray-400">2、讲堂： </p>
+			  <p class="text-gray-400">复原古代讲学场景，看朱熹、张栻的 “朱张会讲” 历史 </p>
+			  <p class="text-gray-400">可蹭导游讲解，或扫二维码听免费导览</p>
+			  <p class="text-gray-400">3、御书楼： </p>
+			  <p class="text-gray-400">藏书阁，建筑古朴，二楼窗外有百年银杏 </p>
+			  <p class="text-gray-400">4、园林区 </p>
+			  <p class="text-gray-400">曲池、古树、碑刻，适合慢逛 </p>
+			  <p class="text-gray-400">拍 “庭院深深” 的氛围感 </p>
+            </div>
+			
+			<div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">16:00 步行到湖南大学 </h4>
+              <p class="text-gray-400">拍照打卡： </p>
+			  <p class="text-gray-400">1、东方红广场： </p>
+			  <p class="text-gray-400">毛主席雕像与岳麓山、湘江同框 </p>
+			  <p class="text-gray-400">2、红楼（行政楼）： </p>
+			  <p class="text-gray-400">民国红砖建筑，爬楼梯至 2 楼，拍复古走廊与拱门 </p>
+			  <p class="text-gray-400">3、自卑亭： </p>
+			  <p class="text-gray-400">古亭刻 “登高必自卑”，适合拍摄 </p>
+            </div>
+			
+			<div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">18：00 步行到麓山南路 </h4>
+              <p class="text-gray-400">美食： </p>
+			  <p class="text-gray-400">1、老头子糖油粑粑 </p>
+			  <p class="text-gray-400">现炸的糖油粑粑外酥里糯，裹着焦糖香的糯米团子咬开还会拉丝 </p>
+			  <p class="text-gray-400">2、鸡柳大人三合一： </p>
+			  <p class="text-gray-400">鸡柳、薯条、年糕炸得外脆里糯，撒上孜然辣椒面 </p>
+			  <p class="text-gray-400">3、乌龙山铁板烧： </p>
+			  <p class="text-gray-400">重口味爱好者必冲！掌中宝、鱿鱼、肥肠烤得焦香入味，辣度可选 </p>
+			  <p class="text-gray-400">正餐： </p>
+			  <p class="text-gray-400">1、鮨花道寿司： </p>
+			  <p class="text-gray-400">凯撒卷中间藏着脆口天妇罗，地狱拉面辣得过瘾 </p>
+			  <p class="text-gray-400">2、家常菜： </p>
+			  <p class="text-gray-400">陈家铺子(新棠巷店) </p>
+			  <p class="text-gray-400">主打清淡家常味。坛子菜炒牛肉酸辣开胃，咸蛋黄茄子裹着沙沙的咸蛋黄香，适合口味偏淡的食客 </p>
+			  <p class="text-gray-400">3、十分满糖水铺： </p>
+			  <p class="text-gray-400">清爽解暑 </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+            </div>
+			
+			<div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">20:00  </h4>
               <p class="text-gray-400"> </p>
+            </div>
+			
+			<div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">避雷 </h4>
+              <p class="text-gray-400">1、交通： </p>
+			  <p class="text-gray-400">橘子洲到岳麓山别打车，地铁更快，长沙早高峰拥堵严重 </p>
+			  <p class="text-gray-400">2、门票： </p>
+			  <p class="text-gray-400">岳麓书院需单独购票，岳麓山门票不包含 </p>
+			  <p class="text-gray-400">3、美食： </p>
+			  <p class="text-gray-400">麓山南路的网红店不一定好吃 </p>
+			  <p class="text-gray-400">4、路线： </p>
+			  <p class="text-gray-400">岳麓山南门进、东门出，全程下坡 + 平路，比东门进轻松 </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
             </div>
             
-            <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400"> </p>
-            </div>
-            
-            <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400"> </p>
-            </div>
           </div>
         </div>
         
         <!-- 第四天行程 -->
         <div id="day-4" class="itinerary-day-content hidden bg-dark/40 backdrop-blur-sm rounded-xl p-8 shadow-lg">
-          <h3 class="text-2xl font-bold mb-6">第四天： </h3>
+          <h3 class="text-2xl font-bold mb-6">第四天：长沙 </h3>
           <div class="timeline">
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400"> </p>
+              <h4 class="text-lg font-medium mb-1">路线规划：</h4>
+              <p class="text-gray-400">潮宗街→古开福寺→湖南博物馆→烈士公园→万家丽广场→扬帆夜市 </p>
+            </div>
+            
+			<div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">古开佛寺预约 </h4>
+              <p class="text-gray-400">1、公众号“古开福寺”免费预约（刷身份证进），也可现场扫码（旺季建议提前约）</p>
+			  <p class="text-gray-400">2、从潮宗街打车/步行，或骑共享单车（长沙街头单车超方便） </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+            </div>
+			
+			<div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">湖南博物馆预约 </h4>
+              <p class="text-gray-400">1、公众号“湖南博物院”提前 3 天预约</p>
+			  <p class="text-gray-400">每天 12:00 放票，旺季秒空！建议定闹钟抢票，分上午场9:00-12:00和 下午场12:00-17:00 </p>
+			  <p class="text-gray-400">刷身份证直接进，不用换票，馆内 Wi-Fi 免费</p>
+            </div>
+			
+            <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">9：00 前往潮宗街 </h4>
+              <p class="text-gray-400">拍照打卡： </p>
+			  <p class="text-gray-400">1、潮宗街石碑配铜质浮雕： </p>
+			  <p class="text-gray-400">宋代古街界标 </p>
+			  <p class="text-gray-400">2、梓园巷： </p>
+			  <p class="text-gray-400">老墙爬满绿植，文艺感拉满 </p>
+			  <p class="text-gray-400">3、真耶稣教堂： </p>
+			  <p class="text-gray-400">百年哥特式建筑，周日早有礼拜，可旁听圣歌 </p>
+			  <p class="text-gray-400">4、连升街 </p>
+			  <p class="text-gray-400">更市井，藏着老长沙面馆</p>
+			  <p class="text-gray-400">早餐推荐： </p>
+			  <p class="text-gray-400">1、刮凉粉 </p>
+			  <p class="text-gray-400">绿豆凉粉浇上剁辣椒，长沙特色早餐 </p>
+			  <p class="text-gray-400">2、猪油拌粉 </p>
+			  <p class="text-gray-400">湘春路，尝和记粉管的猪油拌粉，老长沙味道，配个煎蛋绝了</p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+			  
             </div>
             
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400"> </p>
+              <h4 class="text-lg font-medium mb-1">10:30 古开福寺 </h4>
+              <p class="text-gray-400"></p>
+			  <p class="text-gray-400">1、天王殿 </p>
+			  <p class="text-gray-400">拜弥勒佛，求喜乐 </p>
+			  <p class="text-gray-400">2、大雄宝殿 </p>
+			  <p class="text-gray-400">主殿，求平安 </p>
+			  <p class="text-gray-400">绕着千年银杏转一圈 </p>
+			  <p class="text-gray-400">3、观音殿 </p>
+			  <p class="text-gray-400">求姻缘 / 健康 </p>
+			  <p class="text-gray-400">4、东门： </p>
+			  <p class="text-gray-400">出口处有免费香火，也可自愿捐香火钱请香 </p>
+			  <p class="text-gray-400">5、寺内素斋 </p>
+			  <p class="text-gray-400">11:00-13:00 开放，20 元 / 人，素面配罗汉斋</p>
+			  <p class="text-gray-400">避雷： </p>
+			  <p class="text-gray-400">寺内算命先生多为骗局 </p>
+			  <p class="text-gray-400">拜佛心诚则灵，不用过度消费 </p>
+			  <p class="text-gray-400">寺内穿僧袍主动搭话的「师傅」多为骗局 </p>
+			  <p class="text-gray-400">香灰别用手拍，可到殿前水池用铜勺舀水洗尘 </p>
+			  
             </div>
             
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400"> </p>
+              <h4 class="text-lg font-medium mb-1">13:00 湖南博物馆 </h4>
+              <p class="text-gray-400">1楼： </p>
+			  <p class="text-gray-400">湖南历史文化展： </p>
+			  <p class="text-gray-400">从旧石器时代的石器，到近代湘军，串联湖南通史，重点看皿方罍</p>
+			  <p class="text-gray-400">商代酒器，器身和器盖曾分离百年，故事超燃</p>
+			  <p class="text-gray-400">3楼： </p>
+			  <p class="text-gray-400">马王堆汉墓展区： </p>
+			  <p class="text-gray-400">1、辛追夫人棺椁： </p>
+			  <p class="text-gray-400">四层棺木，外层黑地彩绘超震撼 </p>
+			  <p class="text-gray-400">2、T 型帛画： </p>
+			  <p class="text-gray-400">汉代人对“生死”的想象，细节封神 </p>
+			  <p class="text-gray-400">3、陪葬品区： </p>
+			  <p class="text-gray-400">漆器、乐器、食物模型，汉代贵族生活 </p>
+			  <p class="text-gray-400">推荐： </p>
+			  <p class="text-gray-400">1、租电子导览器（20 元，扫码听讲解，比跟团自由） </p>
+			  <p class="text-gray-400">2、或关注公众号 “湖南博物院”，看文物 3D 解析（比如素纱襌衣的编织工艺） </p>
+			  <p class="text-gray-400">3、文创店推荐：马王堆 “狸猫纹” 冰箱贴、辛追夫人书签（古典风），价格几十元，比景区外划算 </p>
+			  <p class="text-gray-400">文创购买建议： </p>
+			  <p class="text-gray-400">1、价格： </p>
+			  <p class="text-gray-400">冰箱贴、徽章等小件约 30-50 元，毛绒玩偶 40-70 元，丝巾、茶具套装等百元以上，艺术版画、地毯等限量款价格较高 </p>
+			  <p class="text-gray-400">2、线上： </p>
+			  <p class="text-gray-400">湖南博物院官网、淘宝旗舰店提供部分产品，如狸猫系列、冰箱贴等，但联名款或限量商品建议线下选购 </p>
+			  <p class="text-gray-400">3、线下： </p>
+			  <p class="text-gray-400">四楼 “汉生活博物集” 汇聚设计师联名款与互动装置，可沉浸式感受汉代文化 </p>
+			  <p class="text-gray-400">避雷： </p>
+			  <p class="text-gray-400">1、别买 “讲解团” 黄牛票！官方导览更靠谱 </p>
+			  <p class="text-gray-400">2、馆内餐厅难吃还贵，建议逛完去烈士公园附近吃 </p>
+			  <p class="text-gray-400">省博东门出来就是烈士公园 </p>
+			  <p class="text-gray-400"> </p>
             </div>
             
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400"> </p>
+              <h4 class="text-lg font-medium mb-1">16：00 烈士公园 </h4>
+              <p class="text-gray-400"></p>
+			  <p class="text-gray-400">1、烈士纪念塔: </p>
+			  <p class="text-gray-400">缅怀先烈，塔后碑文超震撼 </p>
+			  <p class="text-gray-400">2、沿年嘉湖散步 </p>
+			  <p class="text-gray-400">湖面开阔，垂柳拂岸，夏天赏荷 </p>
+			  <p class="text-gray-400">3、迎丰桥： </p>
+			  <p class="text-gray-400">石拱桥上拍湖面</p>
+			  <p class="text-gray-400">4、租脚踏船： </p>
+			  <p class="text-gray-400">码头在桥南 50 米，30 元 / 小时，选船头有遮阳棚的船，划到湖中心拍全景 </p>
+			  <p class="text-gray-400">美食： </p>
+			  <p class="text-gray-400">老长沙小吃城的杨裕兴面馆：原汤牛肉面</p>
+			  <p class="text-gray-400">避雷： </p>
+			  <p class="text-gray-400">公园内的”游船项目“别碰！电动船贵还慢，脚踏船更自由 </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
             </div>
-            
-            <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400"> </p>
+			
+			<div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">17：30 万家丽广场 </h4>
+              <p class="text-gray-400">1、28 楼高空观景台（免费）： </p>
+			  <p class="text-gray-400">电梯到G 层→ 转观光梯到 28 楼（注意：普通电梯到不了，跟着指示牌找“观光梯”）</p>
+			  <p class="text-gray-400">俯瞰长沙城，西边看日落（18:30-19:00 最佳，夕阳照在国金中心上，超绝） </p>
+			  <p class="text-gray-400">2、世界名人蜡像馆：</p>
+			  <p class="text-gray-400">收费 60 元，蜡像逼真度一般，但顶楼视角独特</p>
+			  <p class="text-gray-400">3、11 楼美食区扫街： </p>
+			  <p class="text-gray-400">炊烟时代小炒黄牛肉：辣得过瘾，配米饭绝了 </p>
+			  <p class="text-gray-400">黑白电视老长沙小吃铺：糖油粑粑、猪油拌粉，一站式尝遍老长沙 </p>
+			  <p class="text-gray-400">茶颜悦色：万家丽定制款 “万家灯火”，奶油顶 + 坚果碎 </p>
+			  <p class="text-gray-400">4、B1 层万家丽文化长廊 </p>
+			  <p class="text-gray-400">免费，看湖南历史浮雕 </p>
+			  <p class="text-gray-400">从三皇五帝到近代，巨型浮雕墙，了解湖南文脉 </p>
+			  <p class="text-gray-400">避雷： </p>
+			  <p class="text-gray-400">1、别在 “观光梯” 里买 “楼层导览图”！免费手册在服务台拿 </p>
+			  <p class="text-gray-400">2、直接冲 11 楼（美食）和 28 楼（观景），其他楼层多是服饰店，性价比一般 </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
             </div>
+			
+			<div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">19：00 扬帆夜市 </h4>
+              <p class="text-gray-400">到扬帆夜市北门，夜市入口，北门最热闹 </p>
+			  <p class="text-gray-400">美食： </p>
+			  <p class="text-gray-400">1、紫苏桃子姜： </p>
+			  <p class="text-gray-400">酸甜脆爽，解辣神器，荐”老字号紫苏桃子姜“摊位 </p>
+			  <p class="text-gray-400">2、灌汤臭豆腐： </p>
+			  <p class="text-gray-400">咬开先喝汤，再蘸酱，推荐 “黑色经典” 家，连锁更卫生 </p>
+			  <p class="text-gray-400">3、梅花小蛋糕： </p>
+			  <p class="text-gray-400">外脆内软，蜂蜜味超香，现做现卖 </p>
+			  <p class="text-gray-400">4、冰粉： </p>
+			  <p class="text-gray-400">选 “玫瑰糍粑冰粉”，料多到溢出来 </p>
+			  <p class="text-gray-400">5、老长沙糖油粑粑： </p>
+			  <p class="text-gray-400">外脆内糯，红糖汁超浓，推荐刘记 </p>
+			  <p class="text-gray-400">避雷： </p>
+			  <p class="text-gray-400">1、别穿白鞋！夜市地面油，容易脏 </p>
+			  <p class="text-gray-400">2、别一次性买太多！先逛一圈，标记想吃的，再回头买 </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+            </div>
+			
           </div>
         </div>
         
         <!-- 第五天行程 -->
         <div id="day-5" class="itinerary-day-content hidden bg-dark/40 backdrop-blur-sm rounded-xl p-8 shadow-lg">
-          <h3 class="text-2xl font-bold mb-6">第五天： </h3>
+          <h3 class="text-2xl font-bold mb-6">第五天：重庆 </h3>
           <div class="timeline">
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400"> </p>
+              <h4 class="text-lg font-medium mb-1">路线规划： </h4>
+              <p class="text-gray-400">解放碑→八一好吃街→魁星楼→洪崖洞→两江夜游</p>
             </div>
             
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400"> </p>
+              <h4 class="text-lg font-medium mb-1">15：00 前往解放碑 </h4>
+              <p class="text-gray-400">拍照： </p>
+			  <p class="text-gray-400">1、解放碑合影： </p>
+			  <p class="text-gray-400">正面拍「解放碑 + 摩天楼群」全景 </p>
+			  <p class="text-gray-400">侧面拍”我在重庆“网红墙（国泰艺术中心旁） </p>
+			  <p class="text-gray-400">注意： </p>
+			  <p class="text-gray-400"></p>
+			  <p class="text-gray-400">重庆夏天易脱水，建议带携带水 </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
             </div>
             
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400"> </p>
+              <h4 class="text-lg font-medium mb-1">15：00 前往八一好吃街 </h4>
+              <p class="text-gray-400">美食： </p>
+			  <p class="text-gray-400">1、好又来酸辣粉： </p>
+			  <p class="text-gray-400">酸辣过瘾，不能吃辣建议点微微辣‌ </p>
+			  <p class="text-gray-400">2、鬼包子： </p>
+			  <p class="text-gray-400">酱肉包肥而不腻，鲜肉包汤汁鲜甜 </p>
+			  <p class="text-gray-400">3、鬼酥肉： </p>
+			  <p class="text-gray-400">外酥里嫩撒辣椒面 </p>
+			  <p class="text-gray-400">4、烤脑花： </p>
+			  <p class="text-gray-400">嫩如豆腐，加折耳根</p>
+			  <p class="text-gray-400">5、山城小汤圆： </p>
+			  <p class="text-gray-400">清凉解辣 </p>
+			  <p class="text-gray-400">6、冰粉 </p>
+			  <p class="text-gray-400">解辣神器 </p>
+			  <p class="text-gray-400">避雷： </p>
+			  <p class="text-gray-400">1、别买高价纪念品（如火锅底料），小吃选本地人排队的摊 </p>
+			  <p class="text-gray-400">2、八一好吃街分 4 层，建议按「1 楼→2 楼→3 楼→4 楼」路线吃，避免重复 </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
             </div>
             
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400"> </p>
+              <h4 class="text-lg font-medium mb-1">16：30 前往魁星楼 </h4>
+              <p class="text-gray-400">拍照： </p>
+			  <p class="text-gray-400">1、古楼： </p>
+			  <p class="text-gray-400">拍魁星楼红墙飞檐 </p>
+			  <p class="text-gray-400">2、22 楼空中连廊 </p>
+			  <p class="text-gray-400">从 1 楼乘电梯到 22 楼，步行至连廊边缘，低角度拍”人 + 下方街道“（汽车行人对比强烈，震撼）</p>
+			  <p class="text-gray-400">电影《少年的你》取景地 </p>
+			  <p class="text-gray-400">3、老茶馆歇脚 </p>
+			  <p class="text-gray-400">魁星楼内「茶事」老茶馆，点杯茉莉花茶，看楼下人来人往 </p>
+			  <p class="text-gray-400">注意： </p>
+			  <p class="text-gray-400">1、连廊边缘风大，手机/相机注意安全 </p>
+			  <p class="text-gray-400">2、电梯可能拥挤，建议错峰乘坐 </p>
+			  <p class="text-gray-400"> </p>
             </div>
             
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400"> </p>
+              <h4 class="text-lg font-medium mb-1">18：00 晚餐 </h4>
+              <p class="text-gray-400">1、江湖菜： </p>
+			  <p class="text-gray-400">杨记隆府：</p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400">2、火锅： </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
             </div>
+			<div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">19：00 前往洪崖洞 </h4>
+              <p class="text-gray-400">1、19:00-19:30 亮灯前： </p>
+			  <p class="text-gray-400">在11楼拍”洪崖洞 + 千厮门大桥“黄昏全景 </p>
+			  <p class="text-gray-400">逛11楼文创店，买“洪崖洞”冰箱贴 </p>
+			  <p class="text-gray-400">2、19:30-20:30 亮灯后拍摄： </p>
+			  <p class="text-gray-400">嘉滨路马路对面（导航”洪崖洞千厮门大桥下“），用手机夜景模式 </p>
+			  <p class="text-gray-400">戴家巷崖壁步道（从洪崖洞 11 楼步行 5 分钟），拍洪崖洞侧面 +江景倒影，人少</p>
+			  <p class="text-gray-400">避雷： </p>
+			  <p class="text-gray-400">1、别进洪崖洞内部，人挤人 + 商业化重</p>
+			  <p class="text-gray-400">1 楼打车难，建议步行至小什字地铁站或回解放碑打车 </p>
+            </div>
+			
+			<div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">20：00 两江夜游 </h4>
+              <p class="text-gray-400">路线：洪崖洞码头登录，经过千厮门大桥、重庆大剧院、来福士、东水门大桥、湖广会馆、长江索道、南滨路、慈云寺、两江汇流等景点‌，最后返回原码头，时间约45分钟 </p>
+			  <p class="text-gray-400">1、购票： </p>
+			  <p class="text-gray-400">建议提前预订（旺季现场可能无票）</p>
+			  <p class="text-gray-400">2、观赏点： </p>
+			  <p class="text-gray-400">船头左侧：拍洪崖洞全景 + 千厮门大桥 </p>
+			  <p class="text-gray-400">船尾右侧：拍重庆来福士”朝天扬帆“灯光秀 </p>
+			  <p class="text-gray-400">3、游船行至江北嘴时，用广角镜头拍洪崖洞倒映江面，宛如漂在水上 </p>
+			  <p class="text-gray-400">注意： </p>
+			  <p class="text-gray-400">1、游船甲板风大，建议带薄外套 </p>
+			  <p class="text-gray-400">2、提前 30 分钟登船占好位置 </p>
+			  <p class="text-gray-400"> </p>
+            </div>
+			
+			<div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">21：00 返航 </h4>
+              <p class="text-gray-400">1、可返回拍摄魁星楼，八一好吃街，解放碑等夜景 </p>
+			  <p class="text-gray-400">2、或直接返回酒店休息 </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+            </div>
+			
+			<div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">注意： </h4>
+              <p class="text-gray-400">1、别信步行多少分钟，实际爬坡多，累了就打车</p>
+			  <p class="text-gray-400">2、夏季 35℃+，每隔2小时补涂防晒霜，随身带小风扇+湿巾</p>
+			  <p class="text-gray-400">3、下午走 1.5 万步起，中间必须穿插空调休息（商场/咖啡馆），否则第二天腿废 </p>
+			  <p class="text-gray-400">4、洪崖洞内部别吃饭！八一好吃街选”排队长 + 本地人多“的店，更靠谱 </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+            </div>
+			
           </div>
         </div>
         
         <!-- 第六天行程 -->
         <div id="day-6" class="itinerary-day-content hidden bg-dark/40 backdrop-blur-sm rounded-xl p-8 shadow-lg">
-          <h3 class="text-2xl font-bold mb-6">第六天： </h3>
+          <h3 class="text-2xl font-bold mb-6">第六天：重庆 </h3>
           <div class="timeline">
+		  <div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">路线规划： </h4>
+              <p class="text-gray-400">重庆动物园→鹅岭二厂→李子坝轻轨穿楼→观音桥→北仓文创园</p>
+            </div>
+			
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400">  </p>
+              <h4 class="text-lg font-medium mb-1">8：00 前往重庆动物园 </h4>
+              <p class="text-gray-400">美食： </p>
+			  <p class="text-gray-400">1、居民楼小面： </p>
+			  <p class="text-gray-400">在动物园附近，随便搜一家 "动物园附近小面"，来上一碗豌杂面 </p>
+			  <p class="text-gray-400">豌豆软糯，杂酱喷香，加个煎蛋，建议初次尝试选”微辣“</p>
+			  <p class="text-gray-400">2、红糖糍粑： </p>
+			  <p class="text-gray-400">外脆内糯，甜而不腻，搭配上一杯冰豆浆，既能解辣，又能顶饱 </p>
+			  <p class="text-gray-400">路线： </p>
+			  <p class="text-gray-400">1、推荐东二门进 </p>
+			  <p class="text-gray-400">2、大熊猫馆： </p>
+			  <p class="text-gray-400">“双双”重重”喜喜”庆庆”四只熊猫，它们常在上午集体活动</p>
+			  <p class="text-gray-400">3、金丝猴馆： </p>
+			  <p class="text-gray-400">川金丝猴在树冠层跳跃，玻璃幕墙设计可近距离观察其金色毛发 </p>
+			  <p class="text-gray-400">4、长颈鹿馆： </p>
+			  <p class="text-gray-400">透明穹顶设计独特，可看到长颈鹿卷食树叶 </p>
+			  <p class="text-gray-400">5、狮虎馆：</p>
+			  <p class="text-gray-400">华南虎、非洲狮等在仿生岩洞中活动，上午是投喂互动的黄金时段 </p>
+			  <p class="text-gray-400">6、两栖爬行动物馆： </p>
+			  <p class="text-gray-400">该馆模拟热带雨林环境，可看到黄金蟒、扬子鳄等，夏季馆内凉爽 </p>
+			  <p class="text-gray-400">7、鸟语林： </p>
+			  <p class="text-gray-400">位于中心湖区，黑天鹅、鹈鹕自由栖息，湖心岛可见丹顶鹤。推荐走吊桥拍摄百鸟齐飞的画面 </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
             </div>
             
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1">  </h4>
-              <p class="text-gray-400"> </p>
+              <h4 class="text-lg font-medium mb-1">11：00 午餐  </h4>
+              <p class="text-gray-400">园内： </p>
+			  <p class="text-gray-400">1、熊猫主题餐厅： </p>
+			  <p class="text-gray-400">提供熊猫造型便当、爪爪冰淇淋及竹香奶茶 </p>
+			  <p class="text-gray-400">周边 </p>
+			  <p class="text-gray-400">1、九龙坡印象汇： </p>
+			  <p class="text-gray-400">2 楼 “印趣小吃街” 有莱得快酸辣粉、乡村基套餐；4 楼守柴炉烤鸭可满足不同需求 </p>
+			  <p class="text-gray-400">2、兴渝四方・四方食店： </p>
+			  <p class="text-gray-400">主打江湖菜，推荐酸酸鸡、椒麻腰花，需提前电话预约 </p>
+			  <p class="text-gray-400"> </p>
             </div>
             
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1">  </h4>
-              <p class="text-gray-400"> </p>
+              <h4 class="text-lg font-medium mb-1">13：00 前往鹅岭二厂  </h4>
+              <p class="text-gray-400">1、路过“军哥书屋”，可花 10 分钟逛复古海报、旧物，秒穿 80 年代 </p>
+			  <p class="text-gray-400">鹅岭二厂：免费入园 </p>
+			  <p class="text-gray-400">拍照打卡： </p>
+			  <p class="text-gray-400">1、TESTBED2 号楼天台： </p>
+			  <p class="text-gray-400">”鹅岭二厂“涂鸦墙+山城全景，下午逆光拍人像超有氛围</p>
+			  <p class="text-gray-400">2、老电梯间： </p>
+			  <p class="text-gray-400">斑驳铁闸门 + 复古按钮 </p>
+			  <p class="text-gray-400">3、懒鱼时光馆： </p>
+			  <p class="text-gray-400">复古杂货+咖啡（二楼靠窗位看江景，点杯“生椰Dirty”配蛋糕） </p>
+			  <p class="text-gray-400">4、T25 文创店： </p>
+			  <p class="text-gray-400">原创重庆主题冰箱贴、手账本，适合买伴手礼 </p>
+			  <p class="text-gray-400">美食：</p>
+			  <p class="text-gray-400">1、大王油茶： </p>
+			  <p class="text-gray-400">试重庆特色 油茶（馓子 + 米糊 + 榨菜，猎奇但上头），搭配酸辣粉 </p>
+			  <p class="text-gray-400">2、茶泡饭： </p>
+			  <p class="text-gray-400">轻食简餐，“梅子茶泡饭”清爽解腻 </p>
+			  <p class="text-gray-400">避雷： </p>
+			  <p class="text-gray-400">别买太贵的网红文创（溢价高），逛免费展区就够出片</p>
+            </div>
+			
+			<div class="timeline-item">
+              <h4 class="text-lg font-medium mb-1">15：00 李子坝轻轨穿楼 </h4>
+              <p class="text-gray-400">打卡： </p>
+			  <p class="text-gray-400">1、经典视角： </p>
+			  <p class="text-gray-400">站在轨道下方，等列车进站时连拍（动态更震撼） </p>
+			  <p class="text-gray-400">2、居民楼视角： </p>
+			  <p class="text-gray-400">从李子坝站出口进居民楼，在楼道窗口拍轻轨“穿墙而过”，感受”住在轻轨里”的奇妙 </p>
+			  <p class="text-gray-400">3、乘坐李子坝轻轨： </p>
+			  <p class="text-gray-400">第一视角体验李子坝轻轨穿楼  </p>
+			  <p class="text-gray-400"> 路边：</p>
+			  <p class="text-gray-400">可买份”鬼包子”（现蒸爆汁，鲜肉包 + 酱肉包双拼），边吃边等轻轨 </p>
             </div>
             
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400"> </p>
+              <h4 class="text-lg font-medium mb-1">16：00 前往观音桥 </h4>
+              <p class="text-gray-400">拍照：</p>
+			  <p class="text-gray-400">1、"我在重庆”大屏： </p>
+			  <p class="text-gray-400">位于"北城天街"附近（具体可问路人，晚上亮灯更出片），和大屏同框比心，配文“在重庆想你”</p>
+			  <p class="text-gray-400">2、九街涂鸦墙： </p>
+			  <p class="text-gray-400">找到“九街涂鸦墙”（彩色潮酷风）拍潮流人像</p>
+			  <p class="text-gray-400">美食： </p>
+			  <p class="text-gray-400">1、好又来酸辣粉： </p>
+			  <p class="text-gray-400">酸辣过瘾，加煎蛋 + 肥肠 </p>
+			  <p class="text-gray-400">2、肖炮现炸酥肉： </p>
+			  <p class="text-gray-400">外酥里嫩，买小份边走边吃 </p>
+			  <p class="text-gray-400">3、山城小汤圆： </p>
+			  <p class="text-gray-400">冰汤圆，解辣神器 </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
             </div>
             
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
-              <p class="text-gray-400"> </p>
+              <h4 class="text-lg font-medium mb-1">18：00 前往北仓文创园 </h4>
+              <p class="text-gray-400">打卡： </p>
+			  <p class="text-gray-400">1、老仓库改造： </p>
+			  <p class="text-gray-400">斑驳砖墙+旧窗户，搭配 北仓图书馆（工业风书架，免费进，拍照安静） </p>
+			  <p class="text-gray-400">2、复合书店（文创+咖啡） </p>
+			  <p class="text-gray-400">3、涂鸦墙： </p>
+			  <p class="text-gray-400">满墙卡通涂鸦 </p>
+			  <p class="text-gray-400">4、文创小店： </p>
+			  <p class="text-gray-400">买重庆方言冰箱贴、手绘地图，当纪念品 </p>
+			  <p class="text-gray-400">5、咖啡馆： </p>
+			  <p class="text-gray-400">坐在露台看夕阳，超惬意 </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400">夜景： </p>
+			  <p class="text-gray-400">19:00 后，文创园路灯亮起，暖黄色调超温馨，拍夜景更有氛围 </p>
+			  
             </div>
             
             <div class="timeline-item">
-              <h4 class="text-lg font-medium mb-1"> </h4>
+              <h4 class="text-lg font-medium mb-1">19：30 晚餐+返程 </h4>
               <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
+			  <p class="text-gray-400"> </p>
             </div>
           </div>
         </div>
         
         <!-- 第七天行程 -->
         <div id="day-7" class="itinerary-day-content hidden bg-dark/40 backdrop-blur-sm rounded-xl p-8 shadow-lg">
-          <h3 class="text-2xl font-bold mb-6">第七天： </h3>
+          <h3 class="text-2xl font-bold mb-6">第七天：重庆 </h3>
           <div class="timeline">
             <div class="timeline-item">
               <h4 class="text-lg font-medium mb-1"> </h4>
@@ -3132,55 +2297,6 @@
         this.textContent = '收起景点';
       }
     });
-
-    // 美食小导航栏切换
-    const cityFoodButtons = document.querySelectorAll('.city-food-btn');
-    cityFoodButtons.forEach(button => {
-      button.addEventListener('click', function () {
-        const city = this.dataset.city;
-        const cityFoods = document.querySelectorAll('.city-foods');
-        cityFoods.forEach(food => {
-          food.classList.add('hidden');
-        });
-        const selectedFoods = document.getElementById(city);
-        selectedFoods.classList.remove('hidden');
-      });
-    });
-
-    // 加载更多美食
-    const loadMoreChongqingFood = document.getElementById('load-more-chongqing-food');
-    const moreChongqingFood = document.getElementById('more-chongqing-food');
-    loadMoreChongqingFood.addEventListener('click', function () {
-      moreChongqingFood.classList.toggle('hidden');
-      if (moreChongqingFood.classList.contains('hidden')) {
-        this.textContent = '加载更多美食';
-      } else {
-        this.textContent = '收起美食';
-      }
-    });
-
-    const loadMoreChangshaFood = document.getElementById('load-more-changsha-food');
-    const moreChangshaFood = document.getElementById('more-changsha-food');
-    loadMoreChangshaFood.addEventListener('click', function () {
-      moreChangshaFood.classList.toggle('hidden');
-      if (moreChangshaFood.classList.contains('hidden')) {
-        this.textContent = '加载更多美食';
-      } else {
-        this.textContent = '收起美食';
-      }
-    });
-
-    const loadMoreChengduFood = document.getElementById('load-more-chengdu-food');
-    const moreChengduFood = document.getElementById('more-chengdu-food');
-    loadMoreChengduFood.addEventListener('click', function () {
-      moreChengduFood.classList.toggle('hidden');
-      if (moreChengduFood.classList.contains('hidden')) {
-        this.textContent = '加载更多美食';
-      } else {
-        this.textContent = '收起美食';
-      }
-    });
-
     // 行程导航切换
     const itineraryDayButtons = document.querySelectorAll('.itinerary-day-btn');
     itineraryDayButtons.forEach(button => {
